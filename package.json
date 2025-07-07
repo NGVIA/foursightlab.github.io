@@ -1,0 +1,29 @@
+{
+  "name": "foursight-lab-website",
+  "version": "1.0.0",
+  "description": "FourSight Lab - AI-Powered Data Intelligence Solutions",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000 || python3 -m http.server 8000",
+    "dev": "live-server",
+    "build": "echo 'No build process required for static site'",
+    "deploy-vercel": "vercel",
+    "deploy-netlify": "netlify deploy --prod"
+  },
+  "keywords": [
+    "ai",
+    "data-intelligence",
+    "rag",
+    "machine-learning",
+    "predictive-analytics"
+  ],
+  "author": "FourSight Lab",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/foursight-lab/website.git"
+  }
+}

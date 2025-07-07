@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FourSight Lab - AI-Powered Data Intelligence Solutions</title>
+    
+    <!-- Add this line in the head section after the title -->
+    <link rel="icon" type="image/svg+xml" href="icons/lab-icon.png">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Transform your data into actionable intelligence with FourSight Lab's AI solutions. From RAG systems to predictive analytics and AI agents.">
+    <meta name="keywords" content="AI solutions, RAG system, churn prediction, AI agents, data intelligence">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://foursightlab.com">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="FourSight Lab - AI Data Solutions">
+    <meta property="og:description" content="Custom AI solutions for your data challenges">
+    <meta property="og:image" content="https://foursightlab.com/og-image.jpg">
+    <meta property="og:url" content="https://foursightlab.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <img src="icons/lab-icon.png" alt="lab" class="logo-icon">
+                <span class="logo-text">FourSight</span>
+                <span class="logo-lab">lab</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a class="nav-link" onclick="scrollToSection('home')">Home</a></li>
+                <li><a class="nav-link" onclick="scrollToSection('solutions')">Solutions</a></li>
+                <li><a class="nav-link" onclick="scrollToSection('products')">Products</a></li>
+                <li><a class="nav-link" onclick="scrollToSection('about')">About</a></li>
+                <li><a class="nav-link" onclick="scrollToSection('contact')">Contact</a></li>
+                <li><a class="nav-cta" onclick="scrollToSection('contact')">Get Started</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Transform Your Data Into Intelligent Decisions</h1>
+            <p class="hero-subtitle">
+                We build custom AI solutions that turn your complex data challenges into competitive advantages. 
+                From intelligent document search to predictive analytics and automated AI agents.
+            </p>
+            <div class="hero-cta-group">
+                <a href="#contact" class="btn-primary" onclick="scrollToSection('contact')">
+                    Discuss Your Data Needs →
+                </a>
+                <a href="#solutions" class="btn-secondary" onclick="scrollToSection('solutions')">
+                    Explore Solutions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do -->
+    <section id="solutions" class="what-we-do">
+        <div class="section-header">
+            <h2 class="section-title">AI Solutions for Your Data</h2>
+            <p class="section-subtitle">We specialize in building custom AI systems tailored to your specific needs</p>
+        </div>
+        <div class="solutions-grid">
+            <div class="solution-card">
+                <div class="solution-icon"></div>
+                <h3>RAG Systems</h3>
+                <p>Think of it as Google for your company documents. Ask questions in plain English and get instant, accurate answers from thousands of files - contracts, reports, emails - in seconds.</p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon"></div>
+                <h3>Predictive Analytics</h3>
+                <p>Know what's coming before it happens. Our AI models predict customer behavior, equipment failures, and market trends with remarkable accuracy, helping you stay ahead.</p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon"></div>
+                <h3>Custom AI Models</h3>
+                <p>Your business is unique, and your AI should be too. We build specialized models for fraud detection, quality control, demand forecasting, and any specific challenge you face.</p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon"></div>
+                <h3>Data Pipeline Automation</h3>
+                <p>Stop wasting time on manual data processing. We create intelligent pipelines that automatically clean, transform, and analyze your data 24/7.</p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon"></div>
+                <h3>Real-time Analytics</h3>
+                <p>Make decisions with live data, not yesterday's reports. Our systems provide instant insights as your data flows in, keeping you responsive to changing conditions.</p>
+            </div>
+            <div class="solution-card">
+                <div class="solution-icon"></div>
+                <h3>Smart Recommendations</h3>
+                <p>Like Netflix for your business decisions. Our AI learns your patterns and suggests optimal actions - from inventory levels to marketing strategies.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="clients">
+        <div class="section-header">
+            <h2 class="section-title">Our Trusted Partners</h2>
+            <p class="section-subtitle">Working with innovative companies to solve real data challenges</p>
+        </div>
+        <div class="clients-content">
+            <div class="clients-logos">
+                <div class="client-item">
+                    <h3 class="client-name">MetLen</h3>
+                </div>
+                <div class="client-item">
+                    <h3 class="client-name">RayMetrics</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Are -->
+    <section id="about" class="who-we-are">
+        <div class="section-header">
+            <h2 class="section-title">The Team Behind FourSight</h2>
+            <p class="section-subtitle">Four experts united by a vision to democratize data intelligence</p>
+        </div>
+        <div class="founders-grid">
+            <div class="founder-card">
+                <div class="founder-number">01</div>
+                <h3 class="founder-name">The Visionary</h3>
+                <p class="founder-role">Data Architecture</p>
+                <p class="founder-description">Saw patterns where others saw chaos. Built the foundation for intelligent data processing.</p>
+            </div>
+            <div class="founder-card">
+                <div class="founder-number">02</div>
+                <h3 class="founder-name">The Innovator</h3>
+                <p class="founder-role">Machine Learning</p>
+                <p class="founder-description">Pioneered algorithms that could predict the unpredictable. Made machines truly learn.</p>
+            </div>
+            <div class="founder-card">
+                <div class="founder-number">03</div>
+                <h3 class="founder-name">The Architect</h3>
+                <p class="founder-role">System Design</p>
+                <p class="founder-description">Created scalable solutions that could handle the data of tomorrow, today.</p>
+            </div>
+            <div class="founder-card">
+                <div class="founder-number">04</div>
+                <h3 class="founder-name">The Strategist</h3>
+                <p class="founder-role">Business Intelligence</p>
+                <p class="founder-description">Bridged the gap between technical excellence and real-world impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="products">
+        <div class="section-header">
+            <h2 class="section-title">Our Proven Solutions</h2>
+            <p class="section-subtitle">Battle-tested AI systems delivering real results</p>
+        </div>
+        
+        <div class="product">
+            <div class="product-content">
+                <h3>MetLen Churn & Acquisition</h3>
+                <p class="product-description">
+                    Stop losing customers to competitors. MetLen uses advanced AI to identify which customers are likely to leave - and more importantly, why. It doesn't just predict churn; it tells you exactly what actions to take to keep each customer happy.
+                </p>
+                <p class="product-description">
+                    <strong>Real Impact:</strong> Reduce customer churn by up to 67% and identify your most profitable acquisition channels with laser precision.
+                </p>
+                <a href="#contact" class="btn-primary" onclick="scrollToSection('contact')">Learn More About MetLen →</a>
+            </div>
+            <div class="product-visual">
+                <div class="product-animation"></div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-content">
+                <h3>Raymetrics RAG System</h3>
+                <p class="product-description">
+                    Imagine having an expert who has read every document in your company and can answer any question instantly. That's Raymetrics RAG. It understands context, finds connections between documents, and gives you precise answers - not just search results.
+                </p>
+                <p class="product-description">
+                    <strong>Why It Matters:</strong> Turn millions of documents into a single source of truth. No more hunting through folders or asking colleagues "where's that report?"
+                </p>
+                <a href="#contact" class="btn-primary" onclick="scrollToSection('contact')">Discover Raymetrics →</a>
+            </div>
+            <div class="product-visual">
+                <div class="product-animation" style="animation-direction: reverse;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; border: 2px solid var(--accent); border-radius: 10px; animation: rotate 8s linear infinite reverse;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section class="coming-soon">
+        <div class="coming-soon-content">
+            <span class="coming-soon-badge">Coming Soon</span>
+            <h2 class="section-title">AI Agents: Your 24/7 Digital Workforce</h2>
+            <p class="section-subtitle">
+                Imagine having tireless assistants that handle repetitive tasks, monitor your systems, and make smart decisions while you sleep. Our AI Agents are like hiring a team that never needs coffee breaks.
+            </p>
+            <p style="margin-top: 2rem; color: var(--gray-600);">
+                <strong>What they'll do:</strong> Customer support that actually helps, automated report generation, 
+                intelligent data monitoring, proactive problem solving, and seamless task automation across your entire business.
+            </p>
+            <div style="margin-top: 3rem;">
+                <a href="#contact" class="btn-primary" onclick="scrollToSection('contact')">Get Early Access →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="final-cta">
+        <div class="final-cta-content">
+            <h2 class="final-cta-title">Let's Solve Your Data Challenges Together</h2>
+            <p class="final-cta-subtitle">
+                Every business has unique data needs. Tell us about yours, and we'll show you how AI can transform your operations.
+            </p>
+            <div class="hero-cta-group">
+                <a href="mailto:info@foursightlab.com" class="btn-primary">
+                    Start the Conversation →
+                </a>
+                <a href="#" class="btn-secondary" style="background: transparent; border: 2px solid white; color: white;">
+                    Schedule a Call
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">FourSight<span style="font-weight: 300; opacity: 0.7;"> lab</span></div>
+            <p class="footer-text">Transforming data into intelligence since 2024</p>
+            <div class="footer-links">
+                <a href="#solutions" class="footer-link" onclick="scrollToSection('solutions')">Solutions</a>
+                <a href="#products" class="footer-link" onclick="scrollToSection('products')">Products</a>
+                <a href="#about" class="footer-link" onclick="scrollToSection('about')">About</a>
+                <a href="#contact" class="footer-link" onclick="scrollToSection('contact')">Contact</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FourSight Lab. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/navigation.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
