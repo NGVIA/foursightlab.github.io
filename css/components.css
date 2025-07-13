@@ -87,10 +87,15 @@
     overflow: hidden;
 }
 
+
+
+/* Also add this if the text is too wide */
 .search-text {
     color: var(--gray-600);
     font-size: 0.9rem;
     display: inline-block;
+    white-space: nowrap; /* Add this to prevent wrapping */
+    overflow: hidden; /* Add this */
     animation: typing 4s steps(20) infinite;
 }
 
@@ -153,20 +158,22 @@
     50% { transform: scale(1.2); }
 }
 
+/* Add this to fix the answer-box visibility */
 .answer-box {
     padding: 1rem 2rem;
     background: var(--success);
     color: var(--light);
     border-radius: 12px;
     font-weight: 700;
+    opacity: 0; /* Add this line - starts hidden */
+    transform: translateY(20px); /* Add this line - starts below */
     animation: slideUp 4s infinite;
 }
 
 @keyframes slideUp {
-    0%, 60% { opacity: 0; transform: translateY(20px); }
-    70%, 100% { opacity: 1; transform: translateY(0); }
+    0%, 40% { opacity: 0; transform: translateY(20px); }  /* Hidden for first 40% */
+    50%, 100% { opacity: 1; transform: translateY(0); }    /* Visible for last 50% */
 }
-
 /* Navigation */
 .nav-header {
     position: fixed;
