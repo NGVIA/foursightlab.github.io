@@ -234,3 +234,42 @@
     border-radius: 50%;
     animation: loading 0.8s linear infinite;
 }
+
+@keyframes orbitLeftToRight {
+    0% {
+        transform: translateX(-100%) scale(0.9);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(0%) scale(1);
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%) scale(0.9);
+        opacity: 0;
+    }
+}
+
+.orbiting-partners {
+    position: relative;
+    height: 60px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orbit-text {
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    white-space: nowrap;
+    opacity: 0;
+}

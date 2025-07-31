@@ -137,3 +137,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', requestTick);
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const texts = document.querySelectorAll(".orbit-text");
+    let index = 0;
+
+    function animateText() {
+        texts.forEach((el, i) => {
+            el.style.animation = "none";
+            el.offsetHeight; // force reflow
+            el.style.animation = "";
+            el.style.opacity = 0;
+        });
+
+        const current = texts[index];
+        current.style.animation = "orbitLeftToRight 6s ease-in-out forwards";
+        index = (index + 1) % texts.length;
+    }
+
+    animateText(); // start immediately
+    setInterval(animateText, 6000); // match animation duration
+});
