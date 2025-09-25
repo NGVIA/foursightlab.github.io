@@ -41,7 +41,6 @@ body {
     background: var(--light);
     color: var(--gray-800);
     overflow-x: hidden;
-    cursor: none;
     line-height: 1.6;
 }
 
