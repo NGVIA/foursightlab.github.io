@@ -1,9 +1,93 @@
 /* Components CSS - All Component Styles */
 
+/* Breadcrumbs */
+.breadcrumbs {
+    background: var(--gray-50);
+    padding: 1rem 0;
+    margin-top: 70px;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.breadcrumbs .container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.breadcrumbs a {
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumbs a:hover {
+    color: var(--secondary);
+}
+
+.breadcrumbs span:last-child {
+    color: var(--gray-900);
+    font-weight: 600;
+}
+
+/* Related Solutions */
+.related-solutions {
+    padding: 5rem 0;
+    background: var(--gray-50);
+}
+
+.related-solutions .solutions-grid,
+.related-solutions .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.related-card {
+    background: var(--light);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--gray-200);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-base);
+    display: block;
+}
+
+.related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary);
+}
+
+.related-card h3 {
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.related-card p {
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.learn-more {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--secondary);
+    font-weight: 600;
+    transition: transform var(--transition-fast);
+}
+
+.related-card:hover .learn-more {
+    transform: translateX(4px);
+}
+
 /* Product Page Styles */
 .product-hero {
     min-height: 100vh;
-    padding-top: 80px;
+    padding-top: 40px;
     display: flex;
     align-items: center;
     position: relative;
