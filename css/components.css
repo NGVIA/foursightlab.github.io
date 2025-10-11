@@ -94,9 +94,36 @@
     overflow: hidden;
 }
 
+/* Background Logo - Takes half the screen */
+.product-hero::before {
+    content: '';
+    position: absolute;
+    right: -10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50vw;
+    height: 50vw;
+    max-width: 800px;
+    max-height: 800px;
+    background-image: url('../icons/ai-brain.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.03;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.product-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
 .product-hero-content {
     flex: 1;
     max-width: 600px;
+    position: relative;
+    z-index: 2;
 }
 
 .product-title {
@@ -1154,11 +1181,32 @@ cite {
     background: linear-gradient(135deg, var(--gray-50) 0%, var(--light) 50%, var(--gray-100) 100%);
 }
 
+/* Background Logo for Main Hero */
+.hero::before {
+    content: '';
+    position: absolute;
+    right: -10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50vw;
+    height: 50vw;
+    max-width: 900px;
+    max-height: 900px;
+    background-image: url('../icons/ai-brain.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.4;
+    z-index: 0;
+    pointer-events: none;
+}
+
 .hero-bg {
     position: absolute;
     width: 100%;
     height: 100%;
     background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+    z-index: 1;
 }
 
 .hero-content {
