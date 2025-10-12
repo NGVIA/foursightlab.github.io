@@ -109,7 +109,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.03;
+    opacity: 0.4;
     z-index: 0;
     pointer-events: none;
 }
@@ -262,6 +262,46 @@
 .use-cases {
     background: var(--gray-50);
     padding: 5rem 0;
+}
+
+/* Colored Use Cases Section - Blue background with yellow accents */
+.use-cases-colored {
+    background: linear-gradient(135deg, #1b3a4b 0%, #0e505b 100%);
+    padding: 5rem 0;
+}
+
+.use-cases-colored .section-header h2 {
+    color: var(--light);
+}
+
+.use-cases-colored .section-header p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.use-cases-colored .use-case {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.use-cases-colored .use-case:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-4px);
+    transition: all 0.3s ease;
+}
+
+.use-cases-colored .use-case h3 {
+    color: #f7b801;
+}
+
+.use-cases-colored .use-case p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.use-cases-colored .use-case-benefits span {
+    background: rgba(247, 184, 1, 0.15);
+    color: #f7b801;
+    border: 1px solid rgba(247, 184, 1, 0.3);
 }
 
 .use-cases-grid {
@@ -1196,7 +1236,7 @@ cite {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.4;
+    opacity: 0.1;
     z-index: 0;
     pointer-events: none;
 }
