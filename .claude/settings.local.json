@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for file in predictive-analytics.html custom-ai-models.html churn-acquisition-models.html data-pipeline-automation.html real-time-analytics.html smart-recommendations.html document-extraction.html)",
+      "Bash(do echo \"Processing: $file\")",
+      "Bash(done)",
+      "Bash(for:*)",
+      "Bash(do echo \"=== $file ===\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
