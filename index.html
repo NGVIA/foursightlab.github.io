@@ -29,6 +29,108 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "FourSight Lab",
+      "url": "https://foursightlab.com",
+      "logo": "https://foursightlab.com/icons/lab-icon2.png",
+      "description": "FourSight Lab is an AI and data intelligence consultancy that builds custom AI systems including RAG systems, predictive analytics, churn prediction models, and intelligent data pipelines.",
+      "foundingDate": "2024",
+      "email": "info@foursightlab.com",
+      "sameAs": []
+    }
+    </script>
+
+    <!-- Structured Data: WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "FourSight Lab",
+      "url": "https://foursightlab.com",
+      "publisher": {
+        "@type": "Organization",
+        "name": "FourSight Lab"
+      }
+    }
+    </script>
+
+    <!-- Structured Data: Services offered -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "FourSight Lab",
+      "url": "https://foursightlab.com",
+      "description": "Custom AI solutions for data challenges: RAG systems, predictive analytics, churn prediction, document data extraction, and intelligent data pipelines.",
+      "areaServed": "Worldwide",
+      "serviceType": [
+        "RAG Systems",
+        "Predictive Analytics",
+        "Custom AI Models",
+        "Data Pipeline Automation",
+        "Real-time Analytics",
+        "Smart Recommendations",
+        "Churn Prediction",
+        "Document Data Extraction"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "AI Solutions",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "RAG Systems",
+              "url": "https://foursightlab.com/rag-systems.html",
+              "description": "AI-powered document search that lets teams query thousands of internal files in plain English."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Predictive Analytics",
+              "url": "https://foursightlab.com/predictive-analytics.html",
+              "description": "Models that forecast customer behavior, equipment failures, and market trends."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom AI Models",
+              "url": "https://foursightlab.com/custom-ai-models.html",
+              "description": "Specialized models for fraud detection, quality control, and domain-specific challenges."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Churn & Acquisition Models",
+              "url": "https://foursightlab.com/churn-acquisition-models.html",
+              "description": "AI models that identify customers likely to leave and the actions that retain them."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Document Data Extraction",
+              "url": "https://foursightlab.com/document-extraction.html",
+              "description": "Extract text, tables, and structured data from PDFs, invoices, contracts, and forms."
+            }
+          }
+        ]
+      }
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -40,12 +142,12 @@
                 <span class="logo-lab">lab</span>
             </a>
             <ul class="nav-menu">
-                <li><a class="nav-link" onclick="scrollToSection('home')">Home</a></li>
-                <li><a class="nav-link" onclick="scrollToSection('solutions')">Solutions</a></li>
-                <li><a class="nav-link" onclick="scrollToSection('products')">Products</a></li>
-                <li><a class="nav-link" onclick="scrollToSection('about')">About</a></li>
-                <li><a class="nav-link" onclick="scrollToSection('contact')">Contact</a></li>
-                <li><a class="nav-cta" onclick="scrollToSection('contact')">Get Started</a></li>
+                <li><a class="nav-link" href="#home" onclick="scrollToSection('home'); return false;">Home</a></li>
+                <li><a class="nav-link" href="#solutions" onclick="scrollToSection('solutions'); return false;">Solutions</a></li>
+                <li><a class="nav-link" href="#products" onclick="scrollToSection('products'); return false;">Products</a></li>
+                <li><a class="nav-link" href="#about" onclick="scrollToSection('about'); return false;">About</a></li>
+                <li><a class="nav-link" href="#contact" onclick="scrollToSection('contact'); return false;">Contact</a></li>
+                <li><a class="nav-cta" href="#contact" onclick="scrollToSection('contact'); return false;">Get Started</a></li>
             </ul>
             <div class="mobile-menu-toggle">
                 <span></span>
@@ -69,10 +171,10 @@
                 From unseen patterns to powerful insights — we turn raw data into decisive action with tailored AI systems.
             </p>
             <div class="hero-cta-group">
-                <a href="#contact" class="btn-primary" onclick="scrollToSection('contact')">
+                <a href="#contact" class="btn-primary" onclick="scrollToSection('contact'); return false;">
                     Discuss Your Data Needs →
                 </a>
-                <a href="#solutions" class="btn-secondary" onclick="scrollToSection('solutions')">
+                <a href="#solutions" class="btn-secondary" onclick="scrollToSection('solutions'); return false;">
                     Explore Solutions
                 </a>
             </div>
@@ -268,7 +370,7 @@
                 intelligent data monitoring, proactive problem solving, and seamless task automation across your entire business.
             </p>
             <div style="margin-top: 3rem;">
-                <a href="#contact" class="btn-primary" onclick="scrollToSection('contact')">Get Early Access →</a>
+                <a href="#contact" class="btn-primary" onclick="scrollToSection('contact'); return false;">Get Early Access →</a>
             </div>
         </div>
     </section>
@@ -297,10 +399,10 @@
             <div class="footer-logo">FourSight<span style="font-weight: 300; opacity: 0.7;"> lab</span></div>
             <p class="footer-text">Transforming data into intelligence since 2024</p>
             <div class="footer-links">
-                <a href="#solutions" class="footer-link" onclick="scrollToSection('solutions')">Solutions</a>
-                <a href="#products" class="footer-link" onclick="scrollToSection('products')">Products</a>
-                <a href="#about" class="footer-link" onclick="scrollToSection('about')">About</a>
-                <a href="#contact" class="footer-link" onclick="scrollToSection('contact')">Contact</a>
+                <a href="#solutions" class="footer-link" onclick="scrollToSection('solutions'); return false;">Solutions</a>
+                <a href="#products" class="footer-link" onclick="scrollToSection('products'); return false;">Products</a>
+                <a href="#about" class="footer-link" onclick="scrollToSection('about'); return false;">About</a>
+                <a href="#contact" class="footer-link" onclick="scrollToSection('contact'); return false;">Contact</a>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 FourSight Lab. All rights reserved.</p>

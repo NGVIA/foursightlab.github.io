@@ -1,0 +1,36 @@
+# FourSight Lab
+
+> FourSight Lab is an AI and data intelligence consultancy that builds custom AI systems for businesses — including RAG (Retrieval-Augmented Generation) systems, predictive analytics, churn prediction models, document data extraction, and intelligent data pipelines.
+
+We help organizations turn raw data into decisive action through tailored AI solutions. Our approach is problem-first: we start with your business challenge, then choose the right technology — whether that's a neural network, a rule-based system, or something simpler.
+
+## What we build
+
+- **RAG Systems**: AI-powered document search that lets teams query thousands of internal files (contracts, reports, emails) in plain English.
+- **Predictive Analytics**: Models that forecast customer behavior, equipment failures, and market trends.
+- **Custom AI Models**: Specialized models for fraud detection, quality control, demand forecasting, and domain-specific challenges.
+- **Data Pipeline Automation**: Intelligent pipelines that clean, transform, and analyze data continuously.
+- **Real-time Analytics**: Live data systems for decision-making as data flows in.
+- **Smart Recommendations**: Recommendation engines for inventory, marketing, and operational decisions.
+
+## Proven solutions
+
+- **Churn & Acquisition Models**: Identify customers likely to leave and the actions that retain them. Documented reductions in customer churn of up to 87%.
+- **Document Data Extraction**: Extract text, tables, and structured data from PDFs, invoices, contracts, and forms — eliminating manual data entry.
+
+## Pages
+
+- [Home](https://foursightlab.com/): Company overview and solution catalog.
+- [RAG Systems](https://foursightlab.com/rag-systems.html): AI document search.
+- [Predictive Analytics](https://foursightlab.com/predictive-analytics.html): Forecasting models.
+- [Custom AI Models](https://foursightlab.com/custom-ai-models.html): Bespoke AI for specific business problems.
+- [Data Pipeline Automation](https://foursightlab.com/data-pipeline-automation.html): Automated data processing.
+- [Real-time Analytics](https://foursightlab.com/real-time-analytics.html): Live data insights.
+- [Smart Recommendations](https://foursightlab.com/smart-recommendations.html): Recommendation engines.
+- [Churn & Acquisition Models](https://foursightlab.com/churn-acquisition-models.html): Customer retention AI.
+- [Document Data Extraction](https://foursightlab.com/document-extraction.html): Document AI.
+
+## Contact
+
+Email: info@foursightlab.com
+Website: https://foursightlab.com
