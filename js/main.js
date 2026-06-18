@@ -1,6 +1,11 @@
 // Main JavaScript - Initialize all components and handle scroll animations
 
 document.addEventListener('DOMContentLoaded', function() {
+    // When the GSAP scroll narrative is active it drives reveals, hero parallax,
+    // and the partners animation. Skip the legacy versions here to avoid two
+    // systems fighting over the same elements.
+    const narrativeActive = window.__narrativeActive === true;
+
     // Initialize Intersection Observer for scroll animations
     const observerOptions = {
         threshold: 0.1,
@@ -26,14 +31,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe elements
-    const animatedElements = document.querySelectorAll(
-        '.solution-card, .client-item, .founder-card, .product, .hero-title, .hero-subtitle, .hero-cta-group'
-    );
-    
-    animatedElements.forEach(el => {
-        observer.observe(el);
-    });
+    // Observe elements (only when the narrative is not handling reveals)
+    if (!narrativeActive) {
+        const animatedElements = document.querySelectorAll(
+            '.solution-card, .client-item, .founder-card, .product, .hero-title, .hero-subtitle, .hero-cta-group'
+        );
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+    }
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -46,9 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Parallax effect for hero background
+    // Parallax effect for hero background (legacy; GSAP handles this when active)
     const heroBg = document.querySelector('.hero-bg');
-    if (heroBg) {
+    if (heroBg && !narrativeActive) {
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const rate = scrolled * -0.5;

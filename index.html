@@ -23,11 +23,30 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Enable motion class before paint so scroll-narrative hidden states only apply
+         when motion is actually allowed. If JS is disabled or motion is reduced,
+         the class is never added and all content renders fully visible. -->
+    <script>
+      (function () {
+        try {
+          var reduce = window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (!reduce) document.documentElement.classList.add('motion');
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/cosmos.css">
     <link rel="stylesheet" href="css/responsive.css">
 
     <!-- Structured Data: Organization -->
@@ -133,11 +152,12 @@
     </script>
 </head>
 <body>
+    <a href="#solutions" class="skip-link">Skip to content</a>
     <!-- Navigation -->
     <nav class="nav-header">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
-                <img src="icons/lab-icon2.png" alt="lab" class="logo-icon">
+                <img src="icons/lab-icon2.png" alt="FourSight Lab logo" class="logo-icon">
                 <span class="logo-text">FourSight</span>
                 <span class="logo-lab">lab</span>
             </a>
@@ -184,9 +204,32 @@
     <!-- What We Do -->
     <section id="solutions" class="what-we-do">
         <div class="section-header">
-            <h2 class="section-title">AI Solutions for Your Data</h2>
-            <p class="section-subtitle">We specialize in building custom AI systems tailored to your specific needs</p>
+            <h2 class="section-title">AI solutions orbiting your data</h2>
+            <p class="section-subtitle">Six ways we turn your data into decisions — explore the system, then dive into each.</p>
         </div>
+
+        <!-- Orbital stage: built by scroll-narrative.js from the cards below when
+             motion is enabled. Purely presentational; the .solutions-grid links
+             remain the source of truth for content, SEO, and no-JS/reduced-motion. -->
+        <div class="cosmos-stage" aria-hidden="true">
+            <div class="cosmos-viewport">
+                <div class="cosmos-rings">
+                    <span class="cosmos-ring cosmos-ring--inner"></span>
+                    <span class="cosmos-ring cosmos-ring--outer"></span>
+                </div>
+                <div class="cosmos-core">
+                    <span class="cosmos-core-label">Your<br>Data</span>
+                </div>
+                <div class="cosmos-orbit"><!-- nodes injected here --></div>
+            </div>
+            <aside class="cosmos-detail" aria-live="off">
+                <span class="cosmos-detail-index">01 / 06</span>
+                <h3 class="cosmos-detail-title"></h3>
+                <p class="cosmos-detail-text"></p>
+                <a class="cosmos-detail-cta" href="#">Learn more →</a>
+            </aside>
+        </div>
+
         <div class="solutions-grid">
             <a href="rag-systems.html" class="solution-card solution-card-link">
                 <div class="solution-icon"></div>
@@ -410,9 +453,15 @@
         </div>
     </footer>
 
+    <!-- Motion libraries (self-hosted in js/vendor — no external dependency) -->
+    <script src="js/vendor/lenis.min.js"></script>
+    <script src="js/vendor/gsap.min.js"></script>
+    <script src="js/vendor/ScrollTrigger.min.js"></script>
+
     <!-- JavaScript Files -->
     <script src="js/navigation.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/scroll-narrative.js"></script>
 </body>
 </html>

@@ -1,0 +1,252 @@
+/* Cosmos — Solutions as an orbital system.
+   The .cosmos-stage is presentational and only shown when motion is enabled AND
+   the viewport is wide enough. Otherwise the .solutions-grid card layout is the
+   visible, accessible fallback. Gating is driven by `html.motion` (set before
+   paint in index.html) plus a min-width media query. */
+
+.cosmos-stage {
+    display: none;
+}
+
+/* The card grid is the default. When the orbital stage is live, hide the grid.
+   Visibility/opacity are driven by GSAP (autoAlpha) in the pin lifecycle, so the
+   orbit fades in only while the section is engaged — it starts hidden to avoid a
+   flash near the top of the page on fast scroll-up. */
+html.motion .cosmos-stage.is-active {
+    display: grid;
+    visibility: hidden;
+    opacity: 0;
+}
+
+html.motion .solutions-grid.is-hidden {
+    display: none;
+}
+
+/* ---- Stage layout: orbit viewport left, detail panel right ---- */
+@media (min-width: 900px) {
+    .cosmos-stage.is-active {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: center;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        min-height: 78vh;
+    }
+}
+
+.cosmos-viewport {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 520px;
+    /* Never let the orbit exceed the pinned viewport height (prevents clipping) */
+    max-height: 68vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateZ(0);
+}
+
+/* ---- Orbit rings ---- */
+.cosmos-rings {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.cosmos-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid var(--gray-200);
+    box-shadow: inset 0 0 60px hsl(var(--shadow-color) / 0.04);
+}
+
+.cosmos-ring--inner { width: 52%; height: 52%; }
+.cosmos-ring--outer { width: 92%; height: 92%; border-style: dashed; border-color: var(--gray-200); }
+
+/* ---- Core ---- */
+.cosmos-core {
+    position: relative;
+    z-index: 3;
+    width: 27%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    color: var(--light);
+    background:
+        radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.22), transparent 55%),
+        linear-gradient(150deg, var(--primary) 0%, var(--secondary) 100%);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+        0 18px 50px -14px hsl(var(--shadow-color) / 0.55);
+}
+
+.cosmos-core::after {
+    /* soft amber halo */
+    content: '';
+    position: absolute;
+    inset: -14%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(247, 184, 1, 0.18), transparent 62%);
+    z-index: -1;
+}
+
+.cosmos-core-label {
+    font-weight: 700;
+    font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+/* ---- Orbit nodes (injected by JS) ---- */
+.cosmos-orbit {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
+.cosmos-node {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* JS sets --x / --y (px from center) and --s (scale) */
+    transform: translate(-50%, -50%) translate(var(--x, 0px), var(--y, 0px)) scale(var(--s, 1));
+    width: 104px;
+    height: 104px;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--light);
+    border: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-md);
+    color: var(--secondary);
+    text-decoration: none;
+    cursor: pointer;
+    transition: box-shadow var(--transition-base), border-color var(--transition-base), background var(--transition-base), color var(--transition-base);
+    will-change: transform;
+}
+
+.cosmos-node-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    padding: 0 0.55rem;
+    pointer-events: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.cosmos-node-dot {
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 1.5px solid transparent;
+    transition: border-color var(--transition-base);
+    pointer-events: none;
+}
+
+/* Focused node — amber ring, filled, forward */
+.cosmos-node.is-focused {
+    background: linear-gradient(150deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--light);
+    border-color: transparent;
+    box-shadow: 0 0 0 2px rgba(247, 184, 1, 0.9), var(--shadow-lg);
+    z-index: 5;
+}
+
+.cosmos-node.is-focused .cosmos-node-label {
+    font-size: 0.6rem; /* counter-scaled: node is ~1.42x, so effective size stays readable */
+}
+
+.cosmos-node.is-dimmed {
+    opacity: 0.42;
+    filter: saturate(0.7);
+}
+
+.cosmos-node:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring), var(--shadow-md);
+}
+
+/* ---- Detail panel ---- */
+.cosmos-detail {
+    position: relative;
+    padding: 1.5rem 0;
+    max-width: 30rem;
+}
+
+.cosmos-detail-index {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--primary);
+    margin-bottom: 0.9rem;
+}
+
+.cosmos-detail-title {
+    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    color: var(--secondary);
+    margin-bottom: 0.9rem;
+    letter-spacing: -0.03em;
+}
+
+.cosmos-detail-text {
+    color: var(--gray-600);
+    line-height: 1.7;
+    font-size: 1.05rem;
+    margin-bottom: 1.4rem;
+}
+
+.cosmos-detail-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: var(--primary);
+    transition: gap var(--transition-base), color var(--transition-base);
+}
+
+.cosmos-detail-cta:hover {
+    gap: 0.7rem;
+    color: var(--primary-strong);
+}
+
+/* Subtle swap animation when the focused solution changes */
+.cosmos-detail.is-swapping .cosmos-detail-title,
+.cosmos-detail.is-swapping .cosmos-detail-text,
+.cosmos-detail.is-swapping .cosmos-detail-index {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.cosmos-detail-title,
+.cosmos-detail-text,
+.cosmos-detail-index,
+.cosmos-detail-cta {
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+/* Scroll hint shown while the section is pinned */
+.cosmos-hint {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    pointer-events: none;
+}

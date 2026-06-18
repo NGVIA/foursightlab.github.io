@@ -163,17 +163,9 @@
     animation: pulse 4s ease-in-out infinite;
 }
 
-.hero-title {
-    animation: fadeInUp 1s forwards;
-}
-
-.hero-subtitle {
-    animation: fadeInUp 1s 0.2s forwards;
-}
-
-.hero-cta-group {
-    animation: fadeInUp 1s 0.4s forwards;
-}
+/* GSAP (scroll-narrative.js) drives the hero entrance when motion is enabled,
+   so the old CSS keyframe reveals are intentionally not applied here.
+   Without motion, the hero is simply visible (no animation). */
 
 /* Product Animation */
 .product-animation {

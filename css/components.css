@@ -86,7 +86,7 @@
 
 /* Product Page Styles */
 .product-hero {
-    min-height: 100vh;
+    min-height: 100dvh;
     padding-top: 40px;
     display: flex;
     align-items: center;
@@ -691,7 +691,7 @@ cite {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(247, 184, 1, 0.14), transparent);
     transition: left 0.6s;
 }
 
@@ -1250,10 +1250,35 @@ cite {
     transition: color var(--transition-fast);
     position: relative;
     cursor: pointer;
+    padding-bottom: 2px;
+}
+
+/* Animated underline — grows from center */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+    transform: translateX(-50%);
+    transition: width var(--transition-base);
 }
 
 .nav-link:hover {
-    color: var(--primary);
+    color: var(--secondary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: var(--secondary);
+    font-weight: 600;
 }
 
 .nav-cta {
@@ -1290,7 +1315,7 @@ cite {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    min-height: 100dvh;
     padding-top: 80px;
     display: flex;
     align-items: center;
@@ -1323,7 +1348,7 @@ cite {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle at 50% 40%, rgba(14, 80, 91, 0.06) 0%, transparent 65%);
     z-index: 1;
 }
 
@@ -1337,22 +1362,22 @@ cite {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 900;
-    line-height: 1.1;
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
     margin-bottom: 1.5rem;
-    color: var(--gray-900);
-    opacity: 0;
+    color: var(--secondary);
+    /* visible by default; motion JS sets the hidden "from" state */
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
     color: var(--gray-600);
     margin-bottom: 3rem;
-    max-width: 800px;
+    max-width: 60ch;
     margin-left: auto;
     margin-right: auto;
-    opacity: 0;
 }
 
 .hero-cta-group {
@@ -1360,7 +1385,6 @@ cite {
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
-    opacity: 0;
 }
 
 /* Solutions Section */
@@ -1374,23 +1398,49 @@ cite {
     margin: 0 auto;
     padding: 0 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
 }
 
 .solution-card {
+    position: relative;
     background: var(--light);
-    border-radius: 16px;
-    padding: 2rem;
-    box-shadow: var(--shadow-md);
-    transition: all var(--transition-base);
-    opacity: 0;
-    transform: translateY(30px);
+    border: 1px solid var(--gray-200);
+    border-radius: 18px;
+    padding: 2.25rem 2rem 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Amber accent bar that grows on hover — single accent, used intentionally */
+.solution-card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 2rem;
+    width: 2.25rem;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 0 0 3px 3px;
+    transition: width var(--transition-base);
 }
 
 .solution-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
+    border-color: var(--gray-300);
+}
+
+.solution-card:hover::before {
+    width: calc(100% - 4rem);
+}
+
+/* Pin the CTA to the bottom so all cards' CTAs align on one line */
+.solution-card .solution-cta {
+    margin-top: auto;
+    align-self: flex-start;
 }
 
 /* .solution-icon {
@@ -1407,14 +1457,36 @@ cite {
 } */
 
 .solution-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--gray-900);
+    font-size: 1.4rem;
+    margin-bottom: 0.85rem;
+    color: var(--secondary);
 }
 
 .solution-card p {
     color: var(--gray-600);
-    line-height: 1.8;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+}
+
+/* Empty icon divs in markup — render as a small teal index dot rather than blank space */
+.solution-card .solution-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1.25rem;
+    border-radius: 11px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 4px 10px -4px hsl(var(--shadow-color) / 0.4);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.solution-card .solution-icon::after {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    opacity: 0.9;
 }
 
 /* Clients Section */
@@ -1439,8 +1511,6 @@ cite {
 }
 
 .client-item {
-    opacity: 0;
-    transform: scale(0.8);
     transition: all var(--transition-slow);
 }
 
@@ -1513,8 +1583,6 @@ cite {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
-    opacity: 0;
-    transform: translateX(-50px);
 }
 
 .product:nth-child(even) {
@@ -1526,12 +1594,10 @@ cite {
 }
 
 .product-content h3 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: clamp(2rem, 3.5vw, 2.6rem);
+    margin-bottom: 1.25rem;
+    color: var(--secondary);
+    letter-spacing: -0.03em;
 }
 
 .product-description {

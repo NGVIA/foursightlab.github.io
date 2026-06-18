@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add shadow and background on scroll
         if (currentScroll > 100) {
             header.style.background = 'rgba(255, 255, 255, 0.98)';
-            header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            header.style.boxShadow = '0 6px 16px -8px hsl(220 38% 14% / 0.18)';
         } else {
             header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+            header.style.boxShadow = '0 1px 3px hsl(220 38% 14% / 0.10)';
         }
         
         // Hide/show header on scroll (optional)
