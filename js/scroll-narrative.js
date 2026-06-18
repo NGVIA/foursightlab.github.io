@@ -214,19 +214,44 @@
       });
     }
 
-    focusNode(0);
-    gsap.set(viewport, { scale: 0.9, transformOrigin: '50% 50%' });
+    // Construction starts from nothing: core + rings hidden, every node at
+    // --reveal 0. buildProgress() (below) reveals them as scroll progresses,
+    // and reverses on scroll-up. focusNode is NOT called here — there are no
+    // visible nodes yet; the detail panel stays empty until construction ends.
+    var core = stage.querySelector('.cosmos-core');
+    var rings = Array.prototype.slice.call(stage.querySelectorAll('.cosmos-ring'));
+    gsap.set(viewport, { scale: 1, transformOrigin: '50% 50%' });
+    if (core) gsap.set(core, { autoAlpha: 0, scale: 0.6, transformOrigin: '50% 50%' });
+    rings.forEach(function (r) { gsap.set(r, { autoAlpha: 0, scale: 0.85, transformOrigin: '50% 50%' }); });
+    nodes.forEach(function (n) { n.el.style.setProperty('--reveal', '0'); });
 
-    // ---- Progress → node mapping -------------------------------------------
-    // The scroll range is divided into: an intro slice (system zooms in from
-    // "distant"), then one equal slice per node. Snap points sit at the END of
-    // the intro and at the CENTER of each node's slice, so the scroll always
-    // settles squarely on a solution — never between two.
-    var INTRO = 0.12;                       // fraction of range spent on the zoom-in
+    // ---- Phase layout ------------------------------------------------------
+    // The pinned scroll range is split into a CONSTRUCTION slice (the system
+    // assembles itself) then one equal slice per node for the focus walkthrough.
+    // Reusing the old intro budget: the former dead zoom (0.12) becomes a wider
+    // construction phase. Progress p is 0..1 over the whole pinned range.
+    var INTRO = 0.28;          // fraction of range spent constructing the system
+    var CORE_END = 0.16;       // intro-local t at which the core has fully arrived
+    var RINGS_END = 0.30;      // intro-local t at which both rings have arrived
+
+    // Intro-local t-window over which node i reveals (evenly split across the
+    // remaining intro after the rings land). Node 0 arrives first.
+    function nodeWindow(i) {
+      var span = (1 - RINGS_END) / nodes.length;
+      return { start: RINGS_END + i * span, end: RINGS_END + (i + 1) * span };
+    }
+
     var stepSpan = (1 - INTRO) / nodes.length;
-    var snapPoints = [INTRO];               // resting at intro-end shows node 0
+
+    // Snap points: one per node's arrival during construction, then one at the
+    // center of each node's focus slice afterward. inertia:false keeps a fling
+    // from running to the bottom, so every gesture settles on a single state.
+    var snapPoints = [];
+    for (var b = 0; b < nodes.length; b++) {
+      snapPoints.push(INTRO * nodeWindow(b).end);   // build: rest when node b lands
+    }
     for (var s = 0; s < nodes.length; s++) {
-      snapPoints.push(INTRO + (s + 0.5) * stepSpan);
+      snapPoints.push(INTRO + (s + 0.5) * stepSpan); // walkthrough: center of slice
     }
 
     function progressToIndex(p) {
@@ -256,6 +281,48 @@
       gsap.to(stage, { autoAlpha: 0, duration: 0.25, ease: 'power2.in' });
     }
 
+    // Clamp helper + smoothstep for gentle ease on each sub-reveal.
+    function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+    function smooth(v) { v = clamp01(v); return v * v * (3 - 2 * v); }
+
+    // Map a sub-window [a,b] of t onto 0..1.
+    function sub(t, a, b) { return clamp01((t - a) / (b - a)); }
+
+    // Drive the construction from total progress p. Imperative (set every frame)
+    // so scrolling back up dismantles the system in reverse. Past INTRO,
+    // everything is clamped fully-revealed and stays put for the walkthrough.
+    function buildProgress(p) {
+      if (p >= INTRO) {
+        if (core) gsap.set(core, { autoAlpha: 1, scale: 1 });
+        rings.forEach(function (r) { gsap.set(r, { autoAlpha: 1, scale: 1 }); });
+        nodes.forEach(function (n) {
+          n.el.style.setProperty('--reveal', '1');
+          n.el.style.pointerEvents = '';   // fully built → hover/click re-enabled
+        });
+        return;
+      }
+      // Mid-construction: nodes aren't fully formed yet, so they shouldn't be
+      // hoverable/clickable (a hover would fire focusNode and populate the
+      // detail panel before the system exists). Re-enabled once p >= INTRO.
+      nodes.forEach(function (n) { n.el.style.pointerEvents = 'none'; });
+      var t = p / INTRO; // intro-local 0..1
+      // Core: scales + fades in first.
+      var coreT = smooth(sub(t, 0, CORE_END));
+      if (core) gsap.set(core, { autoAlpha: coreT, scale: 0.6 + 0.4 * coreT });
+      // Rings: inner then outer, staggered within [CORE_END, RINGS_END].
+      rings.forEach(function (r, ri) {
+        var lead = CORE_END + (ri * (RINGS_END - CORE_END) * 0.35);
+        var rt = smooth(sub(t, lead, RINGS_END));
+        gsap.set(r, { autoAlpha: rt, scale: 0.85 + 0.15 * rt });
+      });
+      // Nodes: each reveals across its own arrival window.
+      nodes.forEach(function (n, i) {
+        var w = nodeWindow(i);
+        var nt = smooth(sub(t, w.start, w.end));
+        n.el.style.setProperty('--reveal', nt.toFixed(3));
+      });
+    }
+
     // Pin the section and step focus through the nodes as the user scrolls.
     var st = window.ScrollTrigger.create({
       trigger: section,
@@ -278,9 +345,11 @@
       },
       onUpdate: function (self) {
         var p = self.progress;
-        var introT = Math.min(1, p / INTRO);
-        gsap.set(viewport, { scale: 0.9 + 0.1 * introT });
-        focusNode(progressToIndex(p));
+        buildProgress(p);
+        // Only run the focus walkthrough once construction is complete — before
+        // that there is no fully-formed system to "focus" and the detail panel
+        // should stay empty.
+        if (p >= INTRO) focusNode(progressToIndex(p));
       }
     });
 
@@ -295,8 +364,14 @@
     hint.className = 'cosmos-hint';
     hint.textContent = 'Scroll to explore';
     viewport.appendChild(hint);
+    // Fade the hint out across the construction phase (INTRO of the pinned
+    // range, which is nodes.length*100% long → INTRO*nodes.length*100%).
     gsap.to(hint, {
-      opacity: 0, scrollTrigger: { trigger: section, start: 'center center', end: '+=25%', scrub: true }
+      opacity: 0,
+      scrollTrigger: {
+        trigger: section, start: 'center center',
+        end: '+=' + Math.round(INTRO * nodes.length * 100) + '%', scrub: true
+      }
     });
 
     void st;

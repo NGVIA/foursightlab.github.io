@@ -116,8 +116,11 @@ html.motion .solutions-grid.is-hidden {
     position: absolute;
     top: 50%;
     left: 50%;
-    /* JS sets --x / --y (px from center) and --s (scale) */
-    transform: translate(-50%, -50%) translate(var(--x, 0px), var(--y, 0px)) scale(var(--s, 1));
+    /* JS sets --x / --y (px from center), --s (focus scale), and --reveal
+       (0→1 build-in factor). --reveal defaults to 1 so the static/no-JS path
+       renders nodes fully visible. */
+    transform: translate(-50%, -50%) translate(var(--x, 0px), var(--y, 0px)) scale(calc(var(--s, 1) * (0.4 + 0.6 * var(--reveal, 1))));
+    opacity: var(--reveal, 1);
     width: 104px;
     height: 104px;
     margin: 0;
