@@ -10,7 +10,7 @@ We help organizations turn raw data into decisive action through tailored AI sys
 - **Document & Process Automation**: Agents that read, complete, and correct documents — including handwritten content from scanned PDFs (HTR) — auto-complete official paperwork via public APIs, and push clean, structured data into ERP (e.g. SoftOne) and other systems.
 - **Predictive & Decision Intelligence**: Churn and acquisition models that forecast outcomes and recommend the next best action; extends to demand forecasting, lifetime-value, lead scoring, and risk/fraud detection.
 - **Live Monitoring & Analytics**: Real-time dashboards (e.g. live energy monitoring) that turn streaming energy, operations, and sensor data into action as it arrives, with anomaly and threshold alerting.
-- **Agent Interoperability & Geospatial AI**: Open-source MCP servers and standards-based connectors that let AI agents query OGC map services (WMS/WFS) and INSPIRE-compliant GIS data. Our `mcp-ogc` server is open source: https://github.com/nickoulos/mcp-ogc
+- **Agent Interoperability & Geospatial AI**: Open-source MCP servers and standards-based connectors that let AI agents query OGC map services (WMS/WFS) and INSPIRE-compliant GIS data.
 
 ## Pages
 
