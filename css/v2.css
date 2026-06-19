@@ -1,0 +1,15 @@
+:root{
+  --bg:#07090d; --near:#34e0d0; --far:#4d7cff;
+  --t1:#e8ebef; --t2:#aab2bd; --t3:#9098a4; --t4:#5b6470;
+  --panel:rgba(9,12,17,0.52); --border:rgba(255,255,255,.08);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;background:var(--bg);}
+body{color:var(--t1);font-family:'IBM Plex Sans',system-ui,sans-serif;overflow-x:hidden;}
+::selection{background:var(--near);color:#06120f;}
+a{color:inherit;}
+#fs-canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;display:block;pointer-events:none;}
+#content{position:relative;z-index:2;}
+@media (prefers-reduced-motion: reduce){
+  #fs-canvas{display:none;}
+}
