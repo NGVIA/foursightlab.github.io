@@ -43,6 +43,45 @@
     }
 }
 
+/* Compact solution cards wherever the orbit can't run.
+   The desktop orbit (scroll-narrative.js) only initializes at >=900px; below
+   that, the static .solutions-grid is the layout. Here each card becomes a tile
+   matching the orbit detail panel: icon + badge + title + a short clamped
+   summary + "Learn More". The extended .solution-detail block (extra paragraphs
+   + demo visuals like the search box and gauge) is meant for the desktop panel,
+   so it's hidden here to keep the cards short and uniform. */
+@media (max-width: 899px) {
+    .solution-card {
+        padding: 1.5rem 1.5rem 1.25rem;
+    }
+
+    .solution-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .solution-card > p {
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.55;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .solution-card .solution-detail {
+        display: none;
+    }
+
+    .solution-card .solution-icon {
+        width: 34px;
+        height: 34px;
+        margin-bottom: 1rem;
+    }
+}
+
 /* Mobile (max-width: 768px) */
 @media (max-width: 768px) {
     /* Navigation */
@@ -138,9 +177,9 @@
     /* Solutions Grid */
     .solutions-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1rem;
     }
-    
+
     /* Clients */
     .clients-logos {
         gap: 2rem;
