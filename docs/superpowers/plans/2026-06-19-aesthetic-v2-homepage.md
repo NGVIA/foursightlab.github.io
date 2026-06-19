@@ -15,7 +15,7 @@
 - Fonts: Sora (display), IBM Plex Sans (body), JetBrains Mono (mono labels).
 - Use proper UTF-8 glyphs: `→`, `↓`, `·` — never the mockup's `â` / `Â` mojibake.
 - All copy and links must be the real values listed in this plan (no placeholder service names).
-- Email: `info@foursightlab.com`. Footer year: 2026.
+- Email: `support@foursightlab.com`. Footer year: 2026.
 - Must include a `prefers-reduced-motion: reduce` fallback: canvas does not animate, all content fully visible.
 - No build step; files must work opened directly and on GitHub Pages.
 
@@ -345,8 +345,8 @@ git commit -m "feat(v2): intro statement and real services list"
   <div class="contact-card">
     <h2 class="contact-title">Let's find your foursight.</h2>
     <p class="contact-sub">A 30-minute call to map where intelligence moves your numbers most. No pitch deck — just a plan.</p>
-    <a class="btn btn-primary" href="mailto:info@foursightlab.com">Book a call →</a>
-    <p class="contact-email"><a href="mailto:info@foursightlab.com">info@foursightlab.com</a></p>
+    <a class="btn btn-primary" href="mailto:support@foursightlab.com">Book a call →</a>
+    <p class="contact-email"><a href="mailto:support@foursightlab.com">support@foursightlab.com</a></p>
   </div>
 </section>
 
@@ -381,7 +381,7 @@ git commit -m "feat(v2): intro statement and real services list"
 
 - [ ] **Step 3: Verify in browser**
 
-Open `index-v2.html`, scroll to bottom. Expected: 3 glass metric cards (stack to 1 column under 860px) with an "Illustrative outcomes" note; teal-glow contact card with heading, subtitle, "Book a call →" opening a `mailto:info@foursightlab.com`, and the email shown below; footer line. Nav "Case studies" and "Contact" links now jump to these sections.
+Open `index-v2.html`, scroll to bottom. Expected: 3 glass metric cards (stack to 1 column under 860px) with an "Illustrative outcomes" note; teal-glow contact card with heading, subtitle, "Book a call →" opening a `mailto:support@foursightlab.com`, and the email shown below; footer line. Nav "Case studies" and "Contact" links now jump to these sections.
 
 - [ ] **Step 4: Commit**
 

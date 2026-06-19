@@ -78,7 +78,7 @@ Rationale:
 | Hero | Eyebrow `// AI-powered data intelligence`; heading **"We see what lies behind data"**; subtitle from the live hero copy; CTAs "Discuss your data needs →" and "See our work" |
 | Services | The **5 real services**, each a numbered row linking to its existing page |
 | Case studies | 3 metric cards (illustrative placeholders, see note) |
-| Contact | Heading "Let's find your foursight."; real email `info@foursightlab.com`; book-a-call CTA |
+| Contact | Heading "Let's find your foursight."; real email `support@foursightlab.com`; book-a-call CTA |
 | Footer | © 2026 FourSight Lab — AI-Powered Data Intelligence |
 
 ### Real services and their links
