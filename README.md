@@ -61,4 +61,4 @@ foursight-lab/
 
 ## 🤝 Support
 
-For support, email info@foursightlab.com
+For support, email support@foursightlab.com

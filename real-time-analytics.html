@@ -1,190 +1,146 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Monitoring & Analytics | FourSight Lab</title>
-
-    <link rel="icon" type="image/svg+xml" href="icons/lab-icon2.png">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Decide on live data, not yesterday's reports. Real-time dashboards that turn streaming data — energy, operations, sensors — into action the moment it arrives.">
-    <meta name="keywords" content="live monitoring, real-time analytics, streaming data, energy monitoring, anomaly detection, real-time dashboards">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://foursightlab.com/real-time-analytics.html">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Live Monitoring & Analytics | FourSight Lab">
-    <meta property="og:description" content="Decide on live data, not yesterday's reports. Real-time dashboards that turn streaming data into action the moment it arrives.">
-    <meta property="og:image" content="https://foursightlab.com/og-image.jpg">
-    <meta property="og:url" content="https://foursightlab.com/real-time-analytics.html">
-    <meta property="og:type" content="website">
-
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live Monitoring &amp; Analytics | FourSight Lab</title>
+<link rel="icon" type="image/png" href="icons/lab-icon2.png">
+<meta name="description" content="Decide on live data, not yesterday's reports. Real-time dashboards that turn streaming data — energy, operations, sensors — into action the moment it arrives.">
+<meta name="keywords" content="live monitoring, real-time analytics, streaming data, energy monitoring, anomaly detection, real-time dashboards">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://foursightlab.com/real-time-analytics.html">
+<meta property="og:title" content="Live Monitoring &amp; Analytics | FourSight Lab">
+<meta property="og:description" content="Decide on live data, not yesterday's reports. Real-time dashboards that turn streaming data into action the moment it arrives.">
+<meta property="og:image" content="https://foursightlab.com/og-image.jpg">
+<meta property="og:url" content="https://foursightlab.com/real-time-analytics.html">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/v2.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav-header">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="icons/lab-icon2.png" alt="lab" class="logo-icon">
-                <span class="logo-text">FourSight</span>
-                <span class="logo-lab">lab</span>
-            </a>
+<a class="skip-link" href="#content">Skip to content</a>
+<canvas id="fs-canvas" aria-hidden="true"></canvas>
+<header class="nav">
+  <a class="brand" href="index.html" aria-label="FourSight Lab home">
+    <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="brand-name">FourSight<span class="brand-lab">lab</span></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="index.html#services">Services</a>
+    <a href="index.html#work">Case studies</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+  <a class="btn btn-primary nav-cta" href="index.html#contact">Book a call</a>
+</header>
+<main id="content" class="page-main">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="index.html">Home</a><span class="sep">›</span><a href="index.html#services">Solutions</a><span class="sep">›</span>Live Monitoring &amp; Analytics
+  </nav>
+  <section class="product-hero">
+    <p class="eyebrow">// live monitoring</p>
+    <h1>Live Monitoring &amp; Analytics</h1>
+    <p class="product-sub">Decide on live data, not yesterday's reports. Real-time dashboards that turn streaming data — energy, operations, sensors — into action the moment it arrives.</p>
+  </section>
+  <section class="section">
+    <div class="section-head">
+      <h2>How It Works</h2>
+      <p>Process and analyze data the moment it arrives</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3>Live Dashboards</h3>
+        <p>We built a live energy-monitoring dashboard with real-time ingestion and visualization — KPIs update the moment data arrives.</p>
+      </div>
+      <div class="feature">
+        <h3>Anomaly &amp; Threshold Alerts</h3>
+        <p>Catch problems as they happen. Threshold and anomaly alerts flag unusual behavior so teams can respond before it escalates.</p>
+      </div>
+      <div class="feature">
+        <h3>Streaming Pipelines</h3>
+        <p>Feed real-time data into the predictive models, so live signals drive forecasts and the next best action.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-head">
+      <h2>Applications</h2>
+      <p>Live insights drive competitive advantage</p>
+    </div>
+    <div class="usecase-grid">
+      <div class="usecase">
+        <h3>Energy Monitoring</h3>
+        <p>We delivered a live energy-monitoring dashboard with real-time ingestion and visualization, turning streaming consumption data into action.</p>
+        <div class="chips">
+          <span class="chip">Live consumption view</span>
+          <span class="chip">Immediate response</span>
         </div>
-    </nav>
-
-    <!-- Particles -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Breadcrumbs -->
-    <nav class="breadcrumbs" style="padding: 1rem 0; max-width: 1200px; margin: 0 auto;">
-        <div style="padding: 0 2rem;">
-            <a href="index.html" style="color: var(--gray-400); text-decoration: none;">Home</a>
-            <span style="color: var(--gray-500); margin: 0 0.5rem;">></span>
-            <a href="index.html#solutions" style="color: var(--gray-400); text-decoration: none;">Solutions</a>
-            <span style="color: var(--gray-500); margin: 0 0.5rem;">></span>
-            <span style="color: var(--gray-200);">Live Monitoring & Analytics</span>
+      </div>
+      <div class="usecase">
+        <h3>Operational &amp; Sensor Monitoring</h3>
+        <p>Monitor operations, IoT devices, and sensors in real time, detecting anomalies before they turn into costly downtime.</p>
+        <div class="chips">
+          <span class="chip">Early anomaly detection</span>
+          <span class="chip">Less downtime</span>
         </div>
-    </nav>
-
-    <!-- Solution Hero Section -->
-    <section class="product-hero">
-        <div class="container">
-            <div class="product-hero-content">
-                <h1 class="product-title">Live Monitoring & Analytics</h1>
-                <p class="product-subtitle">Decide on live data, not yesterday's reports. Real-time dashboards that turn streaming data — energy, operations, sensors — into action the moment it arrives.</p>
-            </div>
+      </div>
+      <div class="usecase">
+        <h3>Real-time KPI Dashboards</h3>
+        <p>Watch the metrics that matter update as events arrive, with threshold alerts that notify the right people instantly.</p>
+        <div class="chips">
+          <span class="chip">Always-current KPIs</span>
+          <span class="chip">Instant alerting</span>
         </div>
-    </section>
-
-    <!-- Solution Details -->
-    <section id="details" class="product-details">
-        <div class="container">
-            <div class="section-header">
-                <h2>How It Works</h2>
-                <p>Process and analyze data the moment it arrives</p>
-            </div>
-
-            <div class="product-features">
-                <div class="feature">
-                    <h3>Live Dashboards</h3>
-                    <p>We built a live energy-monitoring dashboard with real-time ingestion and visualization — KPIs update the moment data arrives.</p>
-                </div>
-
-                <div class="feature">
-                    <h3>Anomaly & Threshold Alerts</h3>
-                    <p>Catch problems as they happen. Threshold and anomaly alerts flag unusual behavior so teams can respond before it escalates.</p>
-                </div>
-
-                <div class="feature">
-                    <h3>Streaming Pipelines</h3>
-                    <p>Feed real-time data into the predictive models, so live signals drive forecasts and the next best action.</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Use Cases -->
-    <section class="use-cases use-cases-colored">
-        <div class="container">
-            <div class="section-header">
-                <h2>Applications</h2>
-                <p>Live insights drive competitive advantage</p>
-            </div>
-            <div class="use-cases-grid">
-                <div class="use-case">
-                    <h3>Energy Monitoring</h3>
-                    <p>We delivered a live energy-monitoring dashboard with real-time ingestion and visualization, turning streaming consumption data into action.</p>
-                    <div class="use-case-benefits">
-                        <span>Live consumption view</span>
-                        <span>Immediate response</span>
-                    </div>
-                </div>
-                <div class="use-case">
-                    <h3>Operational & Sensor Monitoring</h3>
-                    <p>Monitor operations, IoT devices, and sensors in real time, detecting anomalies before they turn into costly downtime.</p>
-                    <div class="use-case-benefits">
-                        <span>Early anomaly detection</span>
-                        <span>Less downtime</span>
-                    </div>
-                </div>
-                <div class="use-case">
-                    <h3>Real-time KPI Dashboards</h3>
-                    <p>Watch the metrics that matter update as events arrive, with threshold alerts that notify the right people instantly.</p>
-                    <div class="use-case-benefits">
-                        <span>Always-current KPIs</span>
-                        <span>Instant alerting</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Related Solutions -->
-    <section class="tech-specs">
-        <div class="container">
-            <div class="section-header">
-                <h2>Related Solutions</h2>
-                <p>Explore more ways to transform your data</p>
-            </div>
-            <div class="tech-specs-grid">
-                <div class="tech-spec">
-                    <h3>Predictive & Decision Intelligence</h3>
-                    <p>Forecast churn and acquisition, then recommend the next best action.</p>
-                    <a href="predictive-analytics.html" class="btn-secondary" style="display: inline-block; margin-top: 1rem;">Learn More</a>
-                </div>
-                <div class="tech-spec">
-                    <h3>Document & Process Automation</h3>
-                    <p>Agents that read, complete, and correct documents, then push clean data into your systems.</p>
-                    <a href="document-extraction.html" class="btn-secondary" style="display: inline-block; margin-top: 1rem;">Learn More</a>
-                </div>
-                <div class="tech-spec">
-                    <h3>Agent Interoperability & Geospatial AI</h3>
-                    <p>Open-source MCP servers connecting agents to standards-based and geospatial systems.</p>
-                    <a href="agent-interoperability.html" class="btn-secondary" style="display: inline-block; margin-top: 1rem;">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="product-cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready for Live Insights?</h2>
-                <p>Stop making decisions with outdated data. See what's happening now and respond instantly.</p>
-                <div class="cta-buttons">
-                    <a href="index.html#contact" class="btn-primary">Request Demo</a>
-                    <a href="index.html#solutions" class="btn-secondary">Explore Solutions</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">FourSight<span style="font-weight: 300; opacity: 0.7;"> lab</span></div>
-            <p class="footer-text">Transforming data into intelligence since 2024</p>
-            <div class="footer-links">
-                <a href="index.html#solutions" class="footer-link">Solutions</a>
-                <a href="index.html#contact" class="footer-link footer-cta">Get Started</a>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 FourSight Lab. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript Files -->
-    <script src="js/navigation.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/main.js"></script>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-head">
+      <h2>Related Solutions</h2>
+      <p>Explore more ways to transform your data</p>
+    </div>
+    <div class="related-grid">
+      <a class="related-card" href="predictive-analytics.html">
+        <h3>Predictive &amp; Decision Intelligence</h3>
+        <p>Forecast churn and acquisition, then recommend the next best action.</p>
+        <span class="related-cta">Learn More →</span>
+      </a>
+      <a class="related-card" href="document-extraction.html">
+        <h3>Document &amp; Process Automation</h3>
+        <p>Agents that read, complete, and correct documents, then push clean data into your systems.</p>
+        <span class="related-cta">Learn More →</span>
+      </a>
+      <a class="related-card" href="agent-interoperability.html">
+        <h3>Agent Interoperability &amp; Geospatial AI</h3>
+        <p>Open-source MCP servers connecting agents to standards-based and geospatial systems.</p>
+        <span class="related-cta">Learn More →</span>
+      </a>
+    </div>
+  </section>
+  <section class="product-cta">
+    <div class="cta-card">
+      <h2>Ready for Live Insights?</h2>
+      <p>Stop making decisions with outdated data. See what's happening now and respond instantly.</p>
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="index.html#contact">Request Demo</a>
+        <a class="btn btn-ghost" href="index.html#services">Explore Solutions</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer footer-product">
+  <span class="brand-name">FourSight<span class="brand-lab">lab</span></span>
+  <span class="footer-tagline">Transforming data into intelligence since 2024</span>
+  <span class="footer-links">
+    <a href="index.html#services">Solutions</a>
+    <a href="index.html#contact">Get Started</a>
+  </span>
+  <span class="footer-copy">© 2026 FourSight Lab. All rights reserved.</span>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+        integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/constellation-v2.js" defer></script>
 </body>
 </html>

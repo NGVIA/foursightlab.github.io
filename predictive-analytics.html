@@ -1,232 +1,188 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predictive & Decision Intelligence | FourSight Lab</title>
-
-    <link rel="icon" type="image/svg+xml" href="icons/lab-icon2.png">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Know what's coming and what to do about it. Our churn and acquisition models don't just forecast — they recommend the next best action.">
-    <meta name="keywords" content="predictive analytics, churn prediction, acquisition prediction, next best action, decision intelligence, lead scoring">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://foursightlab.com/predictive-analytics.html">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Predictive & Decision Intelligence | FourSight Lab">
-    <meta property="og:description" content="Know what's coming and what to do about it. Our churn and acquisition models recommend the next best action.">
-    <meta property="og:image" content="https://foursightlab.com/og-image.jpg">
-    <meta property="og:url" content="https://foursightlab.com/predictive-analytics.html">
-    <meta property="og:type" content="website">
-
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predictive &amp; Decision Intelligence | FourSight Lab</title>
+<link rel="icon" type="image/png" href="icons/lab-icon2.png">
+<meta name="description" content="Know what's coming and what to do about it. Our churn and acquisition models don't just forecast — they recommend the next best action.">
+<meta name="keywords" content="predictive analytics, churn prediction, acquisition prediction, next best action, decision intelligence, lead scoring">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://foursightlab.com/predictive-analytics.html">
+<meta property="og:title" content="Predictive &amp; Decision Intelligence | FourSight Lab">
+<meta property="og:description" content="Know what's coming and what to do about it. Our churn and acquisition models recommend the next best action.">
+<meta property="og:image" content="https://foursightlab.com/og-image.jpg">
+<meta property="og:url" content="https://foursightlab.com/predictive-analytics.html">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/v2.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav-header">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="icons/lab-icon2.png" alt="lab" class="logo-icon">
-                <span class="logo-text">FourSight</span>
-                <span class="logo-lab">lab</span>
-            </a>
+<a class="skip-link" href="#content">Skip to content</a>
+<canvas id="fs-canvas" aria-hidden="true"></canvas>
+<header class="nav">
+  <a class="brand" href="index.html" aria-label="FourSight Lab home">
+    <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="brand-name">FourSight<span class="brand-lab">lab</span></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="index.html#services">Services</a>
+    <a href="index.html#work">Case studies</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+  <a class="btn btn-primary nav-cta" href="index.html#contact">Book a call</a>
+</header>
+<main id="content" class="page-main">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="index.html">Home</a><span class="sep">›</span><a href="index.html#services">Solutions</a><span class="sep">›</span>Predictive &amp; Decision Intelligence
+  </nav>
+  <section class="product-hero">
+    <p class="eyebrow">// predictive intelligence</p>
+    <h1>Predictive &amp; Decision Intelligence</h1>
+    <p class="product-sub">Know what's coming and what to do about it. Our churn and acquisition models don't just forecast — they recommend the next best action.</p>
+  </section>
+  <section class="section">
+    <div class="section-head">
+      <h2>How Predictive &amp; Decision Intelligence Works</h2>
+      <p>Models that forecast outcomes and recommend the action to take next</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3>Churn Prediction</h3>
+        <p>Identify who's likely to leave and why. We surface the at-risk segments and the signals driving them so you can intervene in time.</p>
+      </div>
+      <div class="feature">
+        <h3>Acquisition Prediction</h3>
+        <p>Find and prioritize your most likely converters. Focus spend and outreach on the prospects with the highest propensity to buy.</p>
+      </div>
+      <div class="feature">
+        <h3>Next Best Action</h3>
+        <p>Models recommend the action to take, not just the forecast — turning a prediction into a clear, prioritized decision.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-head">
+      <h2>What Can We Predict?</h2>
+      <p>From churn and acquisition to demand, value, and risk — with a recommended action attached</p>
+    </div>
+    <div class="usecase-grid">
+      <div class="usecase">
+        <h3>Churn Reduction</h3>
+        <p>Identify at-risk customers and the drivers behind them, then recommend the next best action to retain them before they leave.</p>
+        <div class="chips">
+          <span class="chip">Earlier intervention</span>
+          <span class="chip">Action, not just a score</span>
         </div>
-    </nav>
-
-    <!-- Particles -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Breadcrumbs -->
-    <nav class="breadcrumbs">
-        <div class="container">
-            <a href="index.html">Home</a> <span>&gt;</span> <a href="index.html#solutions">Solutions</a> <span>&gt;</span> <span>Predictive & Decision Intelligence</span>
+      </div>
+      <div class="usecase">
+        <h3>Acquisition Targeting</h3>
+        <p>Find and prioritize your most likely converters so campaigns and sales effort land where they pay off.</p>
+        <div class="chips">
+          <span class="chip">Higher conversion</span>
+          <span class="chip">Smarter spend</span>
         </div>
-    </nav>
-
-    <!-- Solution Hero Section -->
-    <section class="product-hero">
-        <div class="container">
-            <div class="product-hero-content">
-                <h1 class="product-title">Predictive & Decision Intelligence</h1>
-                <p class="product-subtitle">Know what's coming and what to do about it. Our churn and acquisition models don't just forecast — they recommend the next best action.</p>
-            </div>
+      </div>
+      <div class="usecase">
+        <h3>Demand &amp; Value Forecasting</h3>
+        <p>Forecast demand across time horizons and model customer lifetime value to plan inventory, pricing, and investment.</p>
+        <div class="chips">
+          <span class="chip">Fewer stockouts</span>
+          <span class="chip">Lifetime-value insight</span>
         </div>
-    </section>
-
-    <!-- Solution Details -->
-    <section id="details" class="product-details">
-        <div class="container">
-            <div class="section-header">
-                <h2>How Predictive & Decision Intelligence Works</h2>
-                <p>Models that forecast outcomes and recommend the action to take next</p>
-            </div>
-
-            <div class="product-features">
-                <div class="feature">
-                    <h3>Churn Prediction</h3>
-                    <p>Identify who's likely to leave and why. We surface the at-risk segments and the signals driving them so you can intervene in time.</p>
-                </div>
-
-                <div class="feature">
-                    <h3>Acquisition Prediction</h3>
-                    <p>Find and prioritize your most likely converters. Focus spend and outreach on the prospects with the highest propensity to buy.</p>
-                </div>
-
-                <div class="feature">
-                    <h3>Next Best Action</h3>
-                    <p>Models recommend the action to take, not just the forecast — turning a prediction into a clear, prioritized decision.</p>
-                </div>
-            </div>
-
+      </div>
+      <div class="usecase">
+        <h3>Lead Scoring &amp; Risk</h3>
+        <p>Score and prioritize leads, and flag risk and fraud early — turning raw signals into ranked, actionable decisions.</p>
+        <div class="chips">
+          <span class="chip">Prioritized leads</span>
+          <span class="chip">Early risk detection</span>
         </div>
-    </section>
-
-    <!-- Prediction Types -->
-    <section class="use-cases use-cases-colored">
-        <div class="container">
-            <div class="section-header">
-                <h2>What Can We Predict?</h2>
-                <p>From churn and acquisition to demand, value, and risk — with a recommended action attached</p>
-            </div>
-            <div class="use-cases-grid">
-                <div class="use-case">
-                    <h3>Churn Reduction</h3>
-                    <p>Identify at-risk customers and the drivers behind them, then recommend the next best action to retain them before they leave.</p>
-                    <div class="use-case-benefits">
-                        <span>Earlier intervention</span>
-                        <span>Action, not just a score</span>
-                    </div>
-                </div>
-                <div class="use-case">
-                    <h3>Acquisition Targeting</h3>
-                    <p>Find and prioritize your most likely converters so campaigns and sales effort land where they pay off.</p>
-                    <div class="use-case-benefits">
-                        <span>Higher conversion</span>
-                        <span>Smarter spend</span>
-                    </div>
-                </div>
-                <div class="use-case">
-                    <h3>Demand & Value Forecasting</h3>
-                    <p>Forecast demand across time horizons and model customer lifetime value to plan inventory, pricing, and investment.</p>
-                    <div class="use-case-benefits">
-                        <span>Fewer stockouts</span>
-                        <span>Lifetime-value insight</span>
-                    </div>
-                </div>
-                <div class="use-case">
-                    <h3>Lead Scoring & Risk</h3>
-                    <p>Score and prioritize leads, and flag risk and fraud early — turning raw signals into ranked, actionable decisions.</p>
-                    <div class="use-case-benefits">
-                        <span>Prioritized leads</span>
-                        <span>Early risk detection</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technical Specifications -->
-    <section class="tech-specs tech-specs-accent">
-        <div class="container">
-            <div class="tech-specs-grid">
-                <div class="tech-spec">
-                    <h3>Data Sources</h3>
-                    <ul>
-                        <li>Sales & Transaction Data</li>
-                        <li>Customer Behavior Analytics</li>
-                        <li>IoT & Sensor Data</li>
-                        <li>Market & Economic Indicators</li>
-                        <li>Social Media & External Data</li>
-                    </ul>
-                </div>
-                <div class="tech-spec">
-                    <h3>AI Techniques</h3>
-                    <ul>
-                        <li>Time Series Forecasting</li>
-                        <li>Machine Learning Ensembles</li>
-                        <li>Deep Learning Networks</li>
-                        <li>Statistical Modeling</li>
-                        <li>Anomaly Detection</li>
-                    </ul>
-                </div>
-                <div class="tech-spec">
-                    <h3>Deployment Options</h3>
-                    <ul>
-                        <li>Cloud-based Dashboard</li>
-                        <li>API Integration</li>
-                        <li>Real-time Alerts</li>
-                        <li>Automated Reports</li>
-                        <li>Mobile Access</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Related Solutions -->
-    <section class="related-solutions">
-        <div class="container">
-            <div class="section-header">
-                <h2>Related Solutions</h2>
-                <p>Enhance your predictive capabilities with these complementary solutions</p>
-            </div>
-            <div class="solutions-grid">
-                <a href="rag-systems.html" class="solution-card solution-card-link">
-                    <h3>Agentic Knowledge & RAG</h3>
-                    <p>Query and act on your knowledge with cited, agentic answers.</p>
-                    <div class="solution-cta">Learn More →</div>
-                </a>
-                <a href="document-extraction.html" class="solution-card solution-card-link">
-                    <h3>Document & Process Automation</h3>
-                    <p>Agents that read, complete, and correct documents — then push clean data into your systems.</p>
-                    <div class="solution-cta">Learn More →</div>
-                </a>
-                <a href="real-time-analytics.html" class="solution-card solution-card-link">
-                    <h3>Live Monitoring & Analytics</h3>
-                    <p>Feed real-time, streaming data straight into your predictive models.</p>
-                    <div class="solution-cta">Learn More →</div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="product-cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to See the Future?</h2>
-                <p>Discover what predictive and decision intelligence can reveal — and recommend — for your business.</p>
-                <div class="cta-buttons">
-                    <a href="index.html#contact" class="btn-primary">Request Demo</a>
-                    <a href="index.html#solutions" class="btn-secondary">Explore Other Solutions</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">FourSight<span style="font-weight: 300; opacity: 0.7;"> lab</span></div>
-            <p class="footer-text">Transforming data into intelligence since 2024</p>
-            <div class="footer-links">
-                <a href="index.html#solutions" class="footer-link">Solutions</a>
-                <a href="index.html#contact" class="footer-link footer-cta">Get Started</a>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 FourSight Lab. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript Files -->
-    <script src="js/navigation.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/main.js"></script>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="specs-grid">
+      <div class="spec-col">
+        <h3>Data Sources</h3>
+        <ul>
+          <li>Sales &amp; Transaction Data</li>
+          <li>Customer Behavior Analytics</li>
+          <li>IoT &amp; Sensor Data</li>
+          <li>Market &amp; Economic Indicators</li>
+          <li>Social Media &amp; External Data</li>
+        </ul>
+      </div>
+      <div class="spec-col">
+        <h3>AI Techniques</h3>
+        <ul>
+          <li>Time Series Forecasting</li>
+          <li>Machine Learning Ensembles</li>
+          <li>Deep Learning Networks</li>
+          <li>Statistical Modeling</li>
+          <li>Anomaly Detection</li>
+        </ul>
+      </div>
+      <div class="spec-col">
+        <h3>Deployment Options</h3>
+        <ul>
+          <li>Cloud-based Dashboard</li>
+          <li>API Integration</li>
+          <li>Real-time Alerts</li>
+          <li>Automated Reports</li>
+          <li>Mobile Access</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-head">
+      <h2>Related Solutions</h2>
+      <p>Enhance your predictive capabilities with these complementary solutions</p>
+    </div>
+    <div class="related-grid">
+      <a class="related-card" href="rag-systems.html">
+        <h3>Agentic Knowledge &amp; RAG</h3>
+        <p>Query and act on your knowledge with cited, agentic answers.</p>
+        <span class="related-cta">Learn More →</span>
+      </a>
+      <a class="related-card" href="document-extraction.html">
+        <h3>Document &amp; Process Automation</h3>
+        <p>Agents that read, complete, and correct documents — then push clean data into your systems.</p>
+        <span class="related-cta">Learn More →</span>
+      </a>
+      <a class="related-card" href="real-time-analytics.html">
+        <h3>Live Monitoring &amp; Analytics</h3>
+        <p>Feed real-time, streaming data straight into your predictive models.</p>
+        <span class="related-cta">Learn More →</span>
+      </a>
+    </div>
+  </section>
+  <section class="product-cta">
+    <div class="cta-card">
+      <h2>Ready to See the Future?</h2>
+      <p>Discover what predictive and decision intelligence can reveal — and recommend — for your business.</p>
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="index.html#contact">Request Demo</a>
+        <a class="btn btn-ghost" href="index.html#services">Explore Other Solutions</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer footer-product">
+  <span class="brand-name">FourSight<span class="brand-lab">lab</span></span>
+  <span class="footer-tagline">Transforming data into intelligence since 2024</span>
+  <span class="footer-links">
+    <a href="index.html#services">Solutions</a>
+    <a href="index.html#contact">Get Started</a>
+  </span>
+  <span class="footer-copy">© 2026 FourSight Lab. All rights reserved.</span>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+        integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/constellation-v2.js" defer></script>
 </body>
 </html>

@@ -1,403 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FourSight Lab - AI-Powered Data Intelligence Solutions</title>
-    
-    <!-- Add this line in the head section after the title -->
-    <link rel="icon" type="image/svg+xml" href="icons/lab-icon2.png">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="FourSight Lab builds agentic AI systems proven in production — agentic RAG, document & process automation, predictive intelligence, live monitoring, and open-source MCP servers that connect agents to real-world data.">
-    <meta name="keywords" content="agentic AI, agentic RAG, AI agents, MCP server, document automation, churn prediction, geospatial AI, data intelligence">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://foursightlab.com">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="FourSight Lab - AI Data Solutions">
-    <meta property="og:description" content="Custom AI solutions for your data challenges">
-    <meta property="og:image" content="https://foursightlab.com/og-image.jpg">
-    <meta property="og:url" content="https://foursightlab.com">
-    <meta property="og:type" content="website">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Enable motion class before paint so scroll-narrative hidden states only apply
-         when motion is actually allowed. If JS is disabled or motion is reduced,
-         the class is never added and all content renders fully visible. -->
-    <script>
-      (function () {
-        try {
-          var reduce = window.matchMedia &&
-            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          if (!reduce) document.documentElement.classList.add('motion');
-        } catch (e) {}
-      })();
-    </script>
-
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/cosmos.css">
-    <link rel="stylesheet" href="css/responsive.css">
-
-    <!-- Structured Data: Organization -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "FourSight Lab",
-      "url": "https://foursightlab.com",
-      "logo": "https://foursightlab.com/icons/lab-icon2.png",
-      "description": "FourSight Lab is an AI and data intelligence consultancy that builds custom AI systems including RAG systems, predictive analytics, churn prediction models, and intelligent data pipelines.",
-      "foundingDate": "2024",
-      "email": "info@foursightlab.com",
-      "sameAs": []
-    }
-    </script>
-
-    <!-- Structured Data: WebSite -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "FourSight Lab",
-      "url": "https://foursightlab.com",
-      "publisher": {
-        "@type": "Organization",
-        "name": "FourSight Lab"
-      }
-    }
-    </script>
-
-    <!-- Structured Data: Services offered -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "FourSight Lab",
-      "url": "https://foursightlab.com",
-      "description": "Agentic AI systems proven in production: agentic knowledge & RAG, document & process automation, predictive & decision intelligence, live monitoring, and agent interoperability including open-source MCP servers and OGC/INSPIRE geospatial integration.",
-      "areaServed": "Worldwide",
-      "serviceType": [
-        "Agentic Knowledge & RAG",
-        "Document & Process Automation",
-        "Predictive & Decision Intelligence",
-        "Live Monitoring & Analytics",
-        "Agent Interoperability & Geospatial AI"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "AI Solutions",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Agentic Knowledge & RAG",
-              "url": "https://foursightlab.com/rag-systems.html",
-              "description": "Agentic RAG systems that answer in plain language from thousands of files, built for massive concurrent usage and kept current by live crawlers."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Document & Process Automation",
-              "url": "https://foursightlab.com/document-extraction.html",
-              "description": "Agents that read, complete, and correct documents — including handwritten scans — and push clean data into ERP and public-sector systems."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Predictive & Decision Intelligence",
-              "url": "https://foursightlab.com/predictive-analytics.html",
-              "description": "Churn and acquisition models that forecast outcomes and recommend the next best action."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Live Monitoring & Analytics",
-              "url": "https://foursightlab.com/real-time-analytics.html",
-              "description": "Real-time dashboards that turn streaming energy, operations, and sensor data into action as it arrives."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Agent Interoperability & Geospatial AI",
-              "url": "https://foursightlab.com/agent-interoperability.html",
-              "description": "Open-source MCP servers and standards-based connectors that let AI agents query OGC/INSPIRE geospatial data and other real-world systems."
-            }
-          }
-        ]
-      }
-    }
-    </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FourSight Lab — AI-Powered Data Intelligence</title>
+<meta name="description" content="FourSight Lab builds agentic AI systems proven in production — agentic RAG, document & process automation, predictive intelligence, live monitoring, and open-source MCP servers.">
+<link rel="icon" type="image/png" href="icons/lab-icon2.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/v2.css">
 </head>
 <body>
-    <a href="#solutions" class="skip-link">Skip to content</a>
-    <!-- Navigation -->
-    <nav class="nav-header">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">
-                <img src="icons/lab-icon2.png" alt="FourSight Lab logo" class="logo-icon">
-                <span class="logo-text">FourSight</span>
-                <span class="logo-lab">lab</span>
-            </a>
-        </div>
-    </nav>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <canvas id="fs-canvas" aria-hidden="true"></canvas>
+  <main id="content">
+<header class="nav">
+  <a class="brand" href="#home" aria-label="FourSight Lab home">
+    <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="brand-name">FourSight<span class="brand-lab">lab</span></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#services">Services</a>
+    <a href="#work">Case studies</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="btn btn-primary nav-cta" href="#contact">Book a call</a>
+</header>
 
-    <!-- Custom Cursor -->
+<section id="home" class="hero">
+  <p class="eyebrow">// AI-powered data intelligence</p>
+  <h1 class="hero-title">We see what lies behind data</h1>
+  <p class="hero-sub">From unseen patterns to autonomous action — we build agentic AI systems that read, decide, and act on your data. In production, not in theory.</p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#contact">Discuss your data needs →</a>
+    <a class="btn btn-ghost" href="#work">See our work</a>
+  </div>
+  <a class="scroll-cue" href="#services" aria-label="Scroll to services">
+    <span>SCROLL</span><span class="cue-arrow" aria-hidden="true">↓</span>
+  </a>
+</section>
 
-    <!-- Particles -->
-    <div class="particles" id="particles"></div>
+<section class="intro">
+  <p class="intro-text">Most companies are <span class="muted">drowning in data</span> and starved of <span class="accent">decisions.</span> We close that gap.</p>
+</section>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">We see what lies behind data</h1>
-            <p class="hero-subtitle">
-                From unseen patterns to autonomous action — we build agentic AI systems that read, decide, and act on your data. In production, not in theory.
-            </p>
-            <div class="hero-cta-group">
-                <a href="#contact" class="btn-primary" onclick="scrollToSection('contact'); return false;">
-                    Discuss Your Data Needs →
-                </a>
-                <a href="#solutions" class="btn-secondary" onclick="scrollToSection('solutions'); return false;">
-                    Explore Solutions
-                </a>
-            </div>
-        </div>
-    </section>
+<section id="services" class="services">
+  <div class="panel">
+    <div class="services-head">
+      <p class="eyebrow">// what we do</p>
+      <h2 class="h2">The full stack of data &amp; AI capability</h2>
+      <p class="services-lede">Five practice areas, proven in production — they connect, compound, and ship together.</p>
+    </div>
+    <div class="rows">
+      <a class="row" href="rag-systems.html">
+        <span class="row-num">01</span>
+        <h3 class="row-title">Agentic Knowledge &amp; RAG</h3>
+        <p class="row-desc">Agentic RAG systems that answer in plain language from thousands of files, built for massive concurrent usage and kept current by live crawlers.</p>
+      </a>
+      <a class="row" href="document-extraction.html">
+        <span class="row-num">02</span>
+        <h3 class="row-title">Document &amp; Process Automation</h3>
+        <p class="row-desc">Agents that read, complete, and correct documents — including handwritten scans — and push clean data into ERP and public-sector systems.</p>
+      </a>
+      <a class="row" href="predictive-analytics.html">
+        <span class="row-num">03</span>
+        <h3 class="row-title">Predictive &amp; Decision Intelligence</h3>
+        <p class="row-desc">Churn and acquisition models that forecast outcomes and recommend the next best action.</p>
+      </a>
+      <a class="row" href="real-time-analytics.html">
+        <span class="row-num">04</span>
+        <h3 class="row-title">Live Monitoring &amp; Analytics</h3>
+        <p class="row-desc">Real-time dashboards that turn streaming energy, operations, and sensor data into action as it arrives.</p>
+      </a>
+      <a class="row" href="agent-interoperability.html">
+        <span class="row-num">05</span>
+        <h3 class="row-title">Agent Interoperability &amp; Geospatial AI</h3>
+        <p class="row-desc">Open-source MCP servers and standards-based connectors that let AI agents query OGC/INSPIRE geospatial data and other real-world systems.</p>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <!-- What We Do -->
-    <section id="solutions" class="what-we-do">
-        <div class="section-header">
-            <h2 class="section-title">AI systems orbiting your data</h2>
-            <p class="section-subtitle">Five practice areas, proven in production — from agentic knowledge systems to AI that interoperates with the real world.</p>
-        </div>
+<section id="work" class="work">
+  <div class="work-head">
+    <p class="eyebrow">// case studies</p>
+    <h2 class="h2">What we build</h2>
+    <p class="work-note">The systems we ship — from messy data to decisions people act on.</p>
+    <div class="cards-nav" aria-hidden="true">
+      <button type="button" class="cards-arrow" data-dir="prev" aria-label="Previous projects">←</button>
+      <button type="button" class="cards-arrow" data-dir="next" aria-label="Next projects">→</button>
+    </div>
+  </div>
+  <div class="cards-viewport">
+    <div class="cards" role="list" tabindex="0" aria-label="Project case studies — scroll horizontally">
+      <article class="card" role="listitem">
+        <div class="stat-label">RAG assistants in production</div>
+        <p class="card-body">Retrieval-augmented assistants serving two audiences — internal teams answering against private knowledge bases, and public-facing assistants built for mass usage with grounded, cited answers.</p>
+        <span class="card-tag">AGENTIC RAG · INTERNAL & PUBLIC</span>
+      </article>
+      <article class="card" role="listitem">
+        <div class="stat-label">Churn & acquisition prediction</div>
+        <p class="card-body">Predictive models for a major energy company that score who's likely to leave and who's worth winning — turning customer data into prioritized retention and acquisition action.</p>
+        <span class="card-tag">ENERGY · PREDICTIVE INTELLIGENCE</span>
+      </article>
+      <article class="card" role="listitem">
+        <div class="stat-label">Energy consumption dashboards</div>
+        <p class="card-body">Live dashboards that make energy consumption legible — usage patterns, anomalies, and trends surfaced clearly so teams act on what's moving the meter, not last month's spreadsheet.</p>
+        <span class="card-tag">ENERGY · MONITORING & BI</span>
+      </article>
+      <article class="card" role="listitem">
+        <div class="stat-label">SoftONE-integrated reporting</div>
+        <p class="card-body">Dashboards wired directly into SoftONE ERP, so operational and financial data flows into one view automatically — no exports, no manual reconciliation, always current.</p>
+        <span class="card-tag">ERP · SOFTONE INTEGRATION</span>
+      </article>
+      <article class="card" role="listitem">
+        <div class="stat-label">Public-API dashboards</div>
+        <p class="card-body">Pipelines and dashboards built on public APIs — pulling external data on a schedule, normalizing it, and presenting it next to your own numbers for richer context.</p>
+        <span class="card-tag">DATA PIPELINES · PUBLIC APIs</span>
+      </article>
+    </div>
+  </div>
+</section>
 
-        <!-- Orbital stage: built by scroll-narrative.js from the cards below when
-             motion is enabled. Purely presentational; the .solutions-grid links
-             remain the source of truth for content, SEO, and no-JS/reduced-motion. -->
-        <div class="cosmos-stage" aria-hidden="true">
-            <div class="cosmos-viewport">
-                <div class="cosmos-rings">
-                    <span class="cosmos-ring cosmos-ring--inner"></span>
-                    <span class="cosmos-ring cosmos-ring--outer"></span>
-                </div>
-                <div class="cosmos-core">
-                    <span class="cosmos-core-label">Your<br>Data</span>
-                </div>
-                <div class="cosmos-orbit"><!-- nodes injected here --></div>
-            </div>
-            <aside class="cosmos-detail" aria-live="off">
-                <span class="cosmos-detail-index">01 / 05</span>
-                <span class="cosmos-detail-badge"></span>
-                <h3 class="cosmos-detail-title"></h3>
-                <p class="cosmos-detail-text"></p>
-                <div class="cosmos-detail-media"></div>
-                <a class="cosmos-detail-cta" href="rag-systems.html">Learn more →</a>
-            </aside>
-        </div>
+<section id="contact" class="contact">
+  <div class="contact-glow" aria-hidden="true"></div>
+  <div class="contact-card">
+    <h2 class="contact-title">Let's find your foursight.</h2>
+    <p class="contact-sub">A 30-minute call to map where intelligence moves your numbers most. No pitch deck — just a plan.</p>
+    <a class="btn btn-primary" href="mailto:support@foursightlab.com">Book a call →</a>
+    <p class="contact-email"><a href="mailto:support@foursightlab.com">support@foursightlab.com</a></p>
+  </div>
+</section>
 
-        <div class="solutions-grid">
-            <a href="rag-systems.html" class="solution-card solution-card-link" data-rich="true">
-                <div class="solution-icon"></div>
-                <span class="solution-proven">Proven · In production</span>
-                <h3>Agentic Knowledge &amp; RAG</h3>
-                <p>Google for your company's knowledge — that also acts on it. Ask in plain language and get instant, cited answers from thousands of files; built to handle massive concurrent usage and stay current via live crawlers.</p>
-                <div class="solution-detail">
-                    <p class="solution-detail-text">We turn scattered company knowledge — contracts, reports, emails, wikis — into a system that answers in plain language with citations you can trust. Our retrieval is agentic: it reasons over multiple sources rather than returning a single lookup.</p>
-                    <p class="solution-detail-text"><strong>Why It Matters:</strong> We've run RAG built for massive concurrent usage and kept it current with crawlers that feed the knowledge base automatically — so answers reflect today, not last quarter.</p>
-                    <div class="solution-visual">
-                        <div class="document-search-container">
-                            <div class="search-bar">
-                                <span class="search-text">What's our Q4 revenue?</span>
-                            </div>
-                            <div class="documents-grid">
-                                <div class="doc-icon"></div>
-                                <div class="doc-icon"></div>
-                                <div class="doc-icon active"></div>
-                                <div class="doc-icon"></div>
-                                <div class="doc-icon active"></div>
-                                <div class="doc-icon"></div>
-                            </div>
-                            <div class="answer-box">
-                                <span class="answer-text">$2.4M ↑ 23%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="solution-cta">Learn More →</div>
-            </a>
-            <a href="document-extraction.html" class="solution-card solution-card-link" data-rich="true">
-                <div class="solution-icon"></div>
-                <span class="solution-proven">Proven · In production</span>
-                <h3>Document &amp; Process Automation</h3>
-                <p>Agents that read, complete, and correct your documents — then push clean data straight into the systems you already run, like your ERP. We've automated accounting flows and public-sector paperwork end to end.</p>
-                <div class="solution-detail">
-                    <p class="solution-detail-text">For a construction group, we automated and simplified accounting workflows for faster, cleaner import into their ERP — with the document flow linked back to an internal knowledge base. For a public-sector authority, we built an agentic hub that auto-completes official documents via public APIs, assembles supporting paperwork, and validates and corrects it before submission.</p>
-                    <p class="solution-detail-text"><strong>Why It Matters:</strong> We even extract handwritten content from scanned PDFs — turning paper archives into searchable, structured data that most extraction tools can't touch.</p>
-                    <div class="solution-visual">
-                        <div class="document-search-container">
-                            <div class="search-bar">
-                                <span class="search-text">Scanned form → structured data</span>
-                            </div>
-                            <div class="documents-grid">
-                                <div class="doc-icon active"></div>
-                                <div class="doc-icon"></div>
-                                <div class="doc-icon active"></div>
-                                <div class="doc-icon active"></div>
-                                <div class="doc-icon"></div>
-                                <div class="doc-icon active"></div>
-                            </div>
-                            <div class="answer-box">
-                                <span class="answer-text">Validated → ERP ✓</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="solution-cta">Learn More →</div>
-            </a>
-            <a href="predictive-analytics.html" class="solution-card solution-card-link" data-rich="true">
-                <div class="solution-icon"></div>
-                <span class="solution-proven">Proven · In production</span>
-                <h3>Predictive &amp; Decision Intelligence</h3>
-                <p>Know what's coming and what to do about it. Our churn and acquisition models don't just forecast — they tell you the next best action for each customer.</p>
-                <div class="solution-detail">
-                    <p class="solution-detail-text">Our churn and acquisition models identify which customers are likely to leave or convert — and, more importantly, why. They don't just predict; they recommend the next best action for each customer.</p>
-                    <p class="solution-detail-text"><strong>Real Impact:</strong> The same approach extends to demand forecasting, lifetime-value modeling, lead scoring, and risk detection.</p>
-                    <div class="solution-visual">
-                        <div class="churn-gauge-container">
-                            <div class="gauge-wrapper">
-                                <svg class="gauge-svg" viewBox="0 0 200 120">
-                                    <path class="gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#2a2a3e" stroke-width="12" stroke-linecap="round"/>
-                                    <path class="gauge-low" d="M 20 100 A 80 80 0 0 1 100 20" fill="none" stroke="#22c55e" stroke-width="12" stroke-linecap="round"/>
-                                    <path class="gauge-medium" d="M 100 20 A 80 80 0 0 1 150 35" fill="none" stroke="#f59e0b" stroke-width="12" stroke-linecap="round"/>
-                                    <path class="gauge-high" d="M 150 35 A 80 80 0 0 1 180 100" fill="none" stroke="#ef4444" stroke-width="12" stroke-linecap="round"/>
-                                    <line class="gauge-needle" x1="100" y1="100" x2="100" y2="30" stroke="#60a5fa" stroke-width="3" stroke-linecap="round"/>
-                                    <circle cx="100" cy="100" r="6" fill="#60a5fa"/>
-                                </svg>
-                                <div class="gauge-labels">
-                                    <span class="gauge-label-left">Low Risk</span>
-                                    <span class="gauge-label-right">High Risk</span>
-                                </div>
-                            </div>
-                            <div class="churn-metric">
-                                <span class="metric-title">Churn Risk Score</span>
-                                <span class="metric-value">13%</span>
-                                <span class="metric-status">Low Risk</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="solution-cta">Learn More →</div>
-            </a>
-            <a href="real-time-analytics.html" class="solution-card solution-card-link">
-                <div class="solution-icon"></div>
-                <span class="solution-proven">Proven · In production</span>
-                <h3>Live Monitoring &amp; Analytics</h3>
-                <p>Decide on live data, not yesterday's reports. Real-time dashboards that turn streaming data — energy, operations, sensors — into action the moment it arrives.</p>
-                <div class="solution-cta">Learn More →</div>
-            </a>
-            <a href="agent-interoperability.html" class="solution-card solution-card-link">
-                <div class="solution-icon"></div>
-                <span class="solution-proven">Open source · Standards-native</span>
-                <h3>Agent Interoperability &amp; Geospatial AI</h3>
-                <p>We make AI agents talk to the real world. We author open-source MCP servers and connect agents to standards-based systems — including OGC/INSPIRE geospatial data powering an international project.</p>
-                <div class="solution-cta">Learn More →</div>
-            </a>
-        </div>
-    </section>
+<footer class="footer">
+  <span class="brand-name">FourSight<span class="brand-lab">lab</span></span>
+  <span>© 2026 FourSight Lab — AI-Powered Data Intelligence</span>
+</footer>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+          integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="js/constellation-v2.js" defer></script>
+  <script>
+  (function(){
+    var track = document.querySelector('.cards');
+    if(!track) return;
+    var prev = document.querySelector('.cards-arrow[data-dir="prev"]');
+    var next = document.querySelector('.cards-arrow[data-dir="next"]');
 
-    <!-- AI Agents (live now) -->
-    <section class="coming-soon">
-        <div class="coming-soon-content">
-            <span class="coming-soon-badge coming-soon-badge--live">Live Now</span>
-            <h2 class="section-title">Agents are the thread through every orbit</h2>
-            <p class="section-subtitle">
-                Across all five practice areas, the common engine is the same: autonomous agents that read, decide, and act on your behalf — answering from your knowledge, completing and correcting documents, recommending the next move, and watching your systems around the clock.
-            </p>
-            <p style="margin-top: 2rem; color: var(--gray-600);">
-                <strong>What they do:</strong> retrieve and reason over your knowledge, complete and validate documents, push clean data into the systems you already run, recommend the next best action, and monitor live data — proactively, 24/7. Ready to deploy today.
-            </p>
-            <div style="margin-top: 3rem;">
-                <a href="#contact" class="btn-primary" onclick="scrollToSection('contact'); return false;">Get Started →</a>
-            </div>
-        </div>
-    </section>
+    function step(){
+      var card = track.querySelector('.card');
+      if(!card) return track.clientWidth * .8;
+      var gap = parseInt(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 20;
+      return card.offsetWidth + gap;
+    }
+    function sync(){
+      if(!prev || !next) return;
+      var max = track.scrollWidth - track.clientWidth - 1;
+      prev.disabled = track.scrollLeft <= 0;
+      next.disabled = track.scrollLeft >= max;
+    }
+    if(prev) prev.addEventListener('click', function(){ track.scrollBy({left:-step(), behavior:'smooth'}); });
+    if(next) next.addEventListener('click', function(){ track.scrollBy({left: step(), behavior:'smooth'}); });
+    track.addEventListener('scroll', sync, {passive:true});
+    window.addEventListener('resize', sync);
+    sync();
 
-    <!-- Clients -->
-    <section class="clients clients--compact">
-        <div class="section-header">
-            <h2 class="section-title">Our Trusted Partners</h2>
-            <p class="section-subtitle">Working with innovative companies to solve real data challenges</p>
-        </div>
-        <div class="clients-logos orbiting-partners">
-            <h3 class="orbit-text">Leading Energy Providers</h3>
-            <h3 class="orbit-text">Compliance-Heavy Industries</h3>
-        </div>
-
-    </section>
-
-    <!-- CTA Section -->
-    <section id="contact" class="final-cta">
-        <div class="final-cta-content">
-            <h2 class="final-cta-title">Let's Solve Your Data Challenges Together</h2>
-            <p class="final-cta-subtitle">
-                Every business has unique data needs. Tell us about yours, and we'll show you how AI can transform your operations.
-            </p>
-            <div class="hero-cta-group">
-                <a href="mailto:info@foursightlab.com" class="btn-primary">
-                    Start the Conversation →
-                </a>
-                <!-- <a href="#" class="btn-secondary" style="background: transparent; border: 2px solid white; color: white;">
-                    Schedule a Call
-                </a> -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">FourSight<span style="font-weight: 300; opacity: 0.7;"> lab</span></div>
-            <p class="footer-text">Transforming data into intelligence since 2024</p>
-            <div class="footer-links">
-                <a href="#solutions" class="footer-link" onclick="scrollToSection('solutions'); return false;">Solutions</a>
-                <a href="#contact" class="footer-link footer-cta" onclick="scrollToSection('contact'); return false;">Get Started</a>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 FourSight Lab. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Motion libraries (self-hosted in js/vendor — no external dependency) -->
-    <script src="js/vendor/lenis.min.js"></script>
-    <script src="js/vendor/gsap.min.js"></script>
-    <script src="js/vendor/ScrollTrigger.min.js"></script>
-
-    <!-- JavaScript Files -->
-    <script src="js/navigation.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/scroll-narrative.js"></script>
+    // Drag / swipe to scroll
+    var down=false, moved=false, startX=0, startScroll=0;
+    track.addEventListener('pointerdown', function(e){
+      if(e.pointerType==='mouse' && e.button!==0) return;
+      down=true; moved=false; startX=e.clientX; startScroll=track.scrollLeft;
+      track.classList.add('is-dragging');
+    });
+    track.addEventListener('pointermove', function(e){
+      if(!down) return;
+      var dx = e.clientX - startX;
+      if(Math.abs(dx) > 4){ moved=true; if(track.setPointerCapture) try{track.setPointerCapture(e.pointerId);}catch(_){} }
+      track.scrollLeft = startScroll - dx;
+    });
+    function endDrag(){ if(!down) return; down=false; track.classList.remove('is-dragging'); sync(); }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+    track.addEventListener('pointerleave', endDrag);
+    track.addEventListener('click', function(e){ if(moved){ e.preventDefault(); e.stopPropagation(); } }, true);
+    track.addEventListener('dragstart', function(e){ e.preventDefault(); });
+  })();
+  </script>
 </body>
 </html>
