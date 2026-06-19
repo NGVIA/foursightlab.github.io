@@ -1,4 +1,4 @@
-# FourSight Lab
+﻿# FourSight Lab
 
 > FourSight Lab is an AI and data intelligence consultancy that builds agentic AI systems for businesses — proven in production. Our work spans agentic RAG and knowledge systems, document and process automation, predictive and decision intelligence, live monitoring, and agent interoperability (including open-source MCP servers and OGC/INSPIRE geospatial integration).
 
@@ -15,11 +15,11 @@ We help organizations turn raw data into decisive action through tailored AI sys
 ## Pages
 
 - [Home](https://foursightlab.com/): Company overview and solution catalog.
-- [Agentic Knowledge & RAG](https://foursightlab.com/rag-systems.html): Agentic RAG and knowledge systems.
-- [Document & Process Automation](https://foursightlab.com/document-extraction.html): Document reading, completion, correction, and system integration.
-- [Predictive & Decision Intelligence](https://foursightlab.com/predictive-analytics.html): Forecasting and next-best-action models.
-- [Live Monitoring & Analytics](https://foursightlab.com/real-time-analytics.html): Real-time dashboards and streaming analytics.
-- [Agent Interoperability & Geospatial AI](https://foursightlab.com/agent-interoperability.html): MCP servers and geospatial agent integration.
+- [Agentic Knowledge & RAG](https://foursightlab.com/rag-systems/): Agentic RAG and knowledge systems.
+- [Document & Process Automation](https://foursightlab.com/document-extraction/): Document reading, completion, correction, and system integration.
+- [Predictive & Decision Intelligence](https://foursightlab.com/predictive-analytics/): Forecasting and next-best-action models.
+- [Live Monitoring & Analytics](https://foursightlab.com/real-time-analytics/): Real-time dashboards and streaming analytics.
+- [Agent Interoperability & Geospatial AI](https://foursightlab.com/agent-interoperability/): MCP servers and geospatial agent integration.
 
 ## Contact
 

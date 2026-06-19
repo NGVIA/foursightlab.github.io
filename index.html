@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -50,7 +50,7 @@
         { "@type": "Question", "name": "What is agentic AI, and how is it different from a chatbot?", "acceptedAnswer": { "@type": "Answer", "text": "A chatbot answers questions. An agentic AI system reads your data, decides what to do, and takes action — completing documents, pushing clean data into your ERP, scoring customers, or querying live systems through standards-based connectors. We build systems that act, not just respond." } },
         { "@type": "Question", "name": "What is agentic RAG?", "acceptedAnswer": { "@type": "Answer", "text": "Agentic RAG is retrieval-augmented generation that reasons over many sources to answer in plain language with citations. Think of it as a private search engine over your company's knowledge — built for heavy concurrent usage and kept current by live crawlers feeding the knowledge base." } },
         { "@type": "Question", "name": "Do you build custom systems or sell a product?", "acceptedAnswer": { "@type": "Answer", "text": "We build custom systems tailored to your problem. Our approach is problem-first: we start with your business challenge, then choose the right technology — an agentic RAG pipeline, a predictive model, or a standards-based connector — rather than forcing a one-size-fits-all product." } },
-        { "@type": "Question", "name": "What data and industries do you work with?", "acceptedAnswer": { "@type": "Answer", "text": "We work across documents, ERP systems (such as SoftOne), energy and operations data, public APIs, and geospatial data (OGC/INSPIRE). We've shipped work in energy, the public sector, and operations-heavy businesses." } },
+        { "@type": "Question", "name": "What data and industries do you work with?", "acceptedAnswer": { "@type": "Answer", "text": "We work across documents, ERP systems (such as SoftONE), energy and operations data, public APIs, and geospatial data (OGC/INSPIRE). We've shipped work in energy, the public sector, and operations-heavy businesses." } },
         { "@type": "Question", "name": "How do we get started?", "acceptedAnswer": { "@type": "Answer", "text": "Book a 30-minute call. We map where intelligence moves your numbers most and leave you with a plan — no pitch deck. Email support@foursightlab.com." } }
       ]
     }
@@ -100,27 +100,27 @@
       <p class="services-lede">Five practice areas, proven in production — they connect, compound, and ship together.</p>
     </div>
     <div class="rows">
-      <a class="row" href="rag-systems.html">
+      <a class="row" href="/rag-systems/">
         <span class="row-num">01</span>
         <h3 class="row-title">Agentic Knowledge &amp; RAG</h3>
         <p class="row-desc">Agentic RAG systems that answer in plain language from thousands of files, built for massive concurrent usage and kept current by live crawlers.</p>
       </a>
-      <a class="row" href="document-extraction.html">
+      <a class="row" href="/document-extraction/">
         <span class="row-num">02</span>
         <h3 class="row-title">Document &amp; Process Automation</h3>
         <p class="row-desc">Agents that read, complete, and correct documents — including handwritten scans — and push clean data into ERP and public-sector systems.</p>
       </a>
-      <a class="row" href="predictive-analytics.html">
+      <a class="row" href="/predictive-analytics/">
         <span class="row-num">03</span>
         <h3 class="row-title">Predictive &amp; Decision Intelligence</h3>
         <p class="row-desc">Churn and acquisition models that forecast outcomes and recommend the next best action.</p>
       </a>
-      <a class="row" href="real-time-analytics.html">
+      <a class="row" href="/real-time-analytics/">
         <span class="row-num">04</span>
         <h3 class="row-title">Live Monitoring &amp; Analytics</h3>
         <p class="row-desc">Real-time dashboards that turn streaming energy, operations, and sensor data into action as it arrives.</p>
       </a>
-      <a class="row" href="agent-interoperability.html">
+      <a class="row" href="/agent-interoperability/">
         <span class="row-num">05</span>
         <h3 class="row-title">Agent Interoperability &amp; Geospatial AI</h3>
         <p class="row-desc">Open-source MCP servers and standards-based connectors that let AI agents query OGC/INSPIRE geospatial data and other real-world systems.</p>
@@ -192,7 +192,7 @@
       </div>
       <div class="row">
         <h3 class="row-title">What data and industries do you work with?</h3>
-        <p class="row-desc">We work across documents, ERP systems (such as SoftOne), energy and operations data, public APIs, and geospatial data (OGC/INSPIRE). We've shipped work in energy, the public sector, and operations-heavy businesses.</p>
+        <p class="row-desc">We work across documents, ERP systems (such as SoftONE), energy and operations data, public APIs, and geospatial data (OGC/INSPIRE). We've shipped work in energy, the public sector, and operations-heavy businesses.</p>
       </div>
       <div class="row">
         <h3 class="row-title">How do we get started?</h3>
@@ -316,16 +316,21 @@
   (function(){
     var reduceMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
-    // Force the address bar back to the clean root URL (no #hash), without
-    // adding a history entry or causing the page to jump.
+    // Force the address bar back to the clean root URL, without adding a
+    // history entry or causing the page to jump. Strips both the #hash and a
+    // trailing "/index.html" so the homepage always reads as "/".
     function cleanUrl(){
-      if(location.hash){
-        history.replaceState(null, '', location.pathname + location.search);
+      var path = location.pathname.replace(/\/index\.html$/, '/');
+      if(location.hash || path !== location.pathname){
+        history.replaceState(null, '', path + location.search);
       }
     }
 
+    // Normalize the URL on load (covers a direct hit on /index.html with no hash).
+    cleanUrl();
+
     // If the page loads with a hash (e.g. arriving from another page's
-    // index.html#work link), scroll there once, then strip the hash.
+    // /#work link), scroll there once, then strip the hash.
     if(location.hash){
       var initial = document.getElementById(location.hash.slice(1));
       if(initial){
