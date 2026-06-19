@@ -85,7 +85,7 @@
   <div class="work-head">
     <p class="eyebrow">// case studies</p>
     <h2 class="h2">What we build</h2>
-    <p class="work-note">The systems we ship — from messy data to decisions people act on. <span class="cards-hint" aria-hidden="true">Move your cursor across to explore →</span></p>
+    <p class="work-note">The systems we ship — from messy data to decisions people act on.</p>
   </div>
   <div class="cards-viewport">
     <div class="cards" role="list" tabindex="0" aria-label="Project case studies — scroll horizontally">
@@ -231,6 +231,30 @@
   // so the address bar stays at the clean root URL while navigating.
   (function(){
     var reduceMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+    // Force the address bar back to the clean root URL (no #hash), without
+    // adding a history entry or causing the page to jump.
+    function cleanUrl(){
+      if(location.hash){
+        history.replaceState(null, '', location.pathname + location.search);
+      }
+    }
+
+    // If the page loads with a hash (e.g. arriving from another page's
+    // index.html#work link), scroll there once, then strip the hash.
+    if(location.hash){
+      var initial = document.getElementById(location.hash.slice(1));
+      if(initial){
+        // Wait a tick so layout is settled before scrolling.
+        requestAnimationFrame(function(){
+          initial.scrollIntoView({ behavior: 'auto' });
+          cleanUrl();
+        });
+      } else {
+        cleanUrl();
+      }
+    }
+
     document.addEventListener('click', function(e){
       var link = e.target.closest('a[href^="#"]');
       if(!link) return;
@@ -240,7 +264,11 @@
       if(!target) return;                   // let unknown anchors behave normally
       e.preventDefault();
       target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+      cleanUrl();                           // belt-and-braces: ensure no hash lingers
     });
+
+    // Catch any hash the browser writes by other means (back/forward, etc.).
+    window.addEventListener('hashchange', cleanUrl);
   })();
   </script>
 
