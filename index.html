@@ -123,8 +123,35 @@
   <div class="contact-card">
     <h2 class="contact-title">Let's find your foursight.</h2>
     <p class="contact-sub">A 30-minute call to map where intelligence moves your numbers most. No pitch deck — just a plan.</p>
-    <a class="btn btn-primary" href="mailto:support@foursightlab.com">Book a call →</a>
-    <p class="contact-email"><a href="mailto:support@foursightlab.com">support@foursightlab.com</a></p>
+
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <!-- Web3Forms access key — get a free one at https://web3forms.com (enter support@foursightlab.com) -->
+      <input type="hidden" name="access_key" value="146f9268-d90b-4285-a915-b6abdc47d82a">
+      <input type="hidden" name="subject" value="New booking request — foursightlab.com">
+      <input type="hidden" name="from_name" value="FourSight Lab website">
+      <!-- Honeypot: bots fill this, humans don't -->
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="form-row">
+        <label class="form-field">
+          <span class="form-label">Name</span>
+          <input class="form-input" type="text" name="name" required autocomplete="name" placeholder="Your name">
+        </label>
+        <label class="form-field">
+          <span class="form-label">Email</span>
+          <input class="form-input" type="email" name="email" required autocomplete="email" placeholder="you@company.com">
+        </label>
+      </div>
+      <label class="form-field">
+        <span class="form-label">What would you like to explore?</span>
+        <textarea class="form-input" name="message" rows="4" required placeholder="A line or two about your data, your goals, or the problem you're chewing on."></textarea>
+      </label>
+
+      <button class="btn btn-primary form-submit" type="submit">Book a call →</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="contact-email">Prefer email? <a href="mailto:support@foursightlab.com">support@foursightlab.com</a></p>
   </div>
 </section>
 
@@ -213,6 +240,46 @@
       if(!target) return;                   // let unknown anchors behave normally
       e.preventDefault();
       target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  })();
+  </script>
+
+  <script>
+  // Contact form: submit to Web3Forms via fetch so the visitor stays on the page
+  // and sees an inline confirmation instead of a redirect.
+  (function(){
+    var form = document.querySelector('.contact-form');
+    if(!form) return;
+    var status = form.querySelector('.form-status');
+    var submit = form.querySelector('.form-submit');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      status.className = 'form-status';
+      status.textContent = 'Sending…';
+      submit.disabled = true;
+
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      })
+      .then(function(res){ return res.json().then(function(data){ return { ok: res.ok, data: data }; }); })
+      .then(function(r){
+        if(r.ok){
+          form.reset();
+          status.className = 'form-status is-ok';
+          status.textContent = 'Thanks — we got it. We’ll be in touch within a day.';
+        } else {
+          status.className = 'form-status is-err';
+          status.textContent = (r.data && r.data.message) || 'Something went wrong. Please email us directly.';
+        }
+      })
+      .catch(function(){
+        status.className = 'form-status is-err';
+        status.textContent = 'Network error. Please email support@foursightlab.com.';
+      })
+      .finally(function(){ submit.disabled = false; });
     });
   })();
   </script>
