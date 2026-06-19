@@ -20,6 +20,12 @@ build/
 *.min.css
 *.min.js
 
+# Self-hosted vendor libraries must be committed (they ship to production)
+!js/vendor/
+!js/vendor/*.min.js
+!css/vendor/
+!css/vendor/*.min.css
+
 # Logs
 *.log
 npm-debug.log*
