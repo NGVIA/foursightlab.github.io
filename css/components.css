@@ -1489,6 +1489,47 @@ cite {
     opacity: 0.9;
 }
 
+/* "Proven · Battle-tested" badge on the two enriched solution cards */
+.solution-proven {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.4rem;
+    margin-bottom: 0.85rem;
+    padding: 0.28rem 0.7rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary-strong);
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+    border-radius: 50px;
+}
+
+/* Rich detail (extra copy + moved visual) carried by the enriched cards.
+   This is the single source of truth: shown in the card on mobile/no-JS,
+   and cloned into the desktop orbit's detail panel by scroll-narrative.js. */
+.solution-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.solution-detail-text {
+    color: var(--gray-600);
+    line-height: 1.7;
+    font-size: 0.98rem;
+    margin-bottom: 0;
+}
+
+.solution-visual {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
+}
+
 /* Clients Section */
 .clients {
     padding: 5rem 0;
@@ -1523,6 +1564,37 @@ cite {
 
 .client-item:hover .client-name {
     color: var(--primary);
+}
+
+/* Compact / discreet partners strip — smaller, quieter, sits near the footer */
+.clients--compact {
+    padding: 2.5rem 0;
+}
+
+.clients--compact .section-title {
+    font-size: 1.15rem;
+    color: var(--gray-600);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.clients--compact .section-subtitle {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+}
+
+.clients--compact .clients-logos {
+    margin-top: 1.25rem;
+}
+
+.clients--compact .orbiting-partners {
+    height: 36px;
+}
+
+.clients--compact .orbit-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-500);
 }
 
 /* How We Work Section */
@@ -1648,6 +1720,39 @@ cite {
     border-radius: 50px;
     font-weight: 600;
     margin-bottom: 2rem;
+}
+
+/* "Live Now" variant — green with a pulsing dot to signal it's shipping today */
+.coming-soon-badge--live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: color-mix(in srgb, var(--success) 14%, transparent);
+    color: var(--success);
+    border: 1px solid color-mix(in srgb, var(--success) 32%, transparent);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+}
+
+.coming-soon-badge--live::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--success) 60%, transparent);
+    animation: livePulse 2s ease-out infinite;
+}
+
+@keyframes livePulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--success) 55%, transparent); }
+    70% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--success) 0%, transparent); }
+    100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--success) 0%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .coming-soon-badge--live::before { animation: none; }
 }
 
 /* CTA Section */

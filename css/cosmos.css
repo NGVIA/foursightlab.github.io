@@ -24,14 +24,48 @@ html.motion .solutions-grid.is-hidden {
 
 /* ---- Stage layout: orbit viewport left, detail panel right ---- */
 @media (min-width: 900px) {
+    /* When the orbit is active the section is pinned and centred in the viewport.
+       Its title + subtitle + orbit together are taller than 100vh, so the centred
+       layout clipped the heading off the top. Tighten the vertical budget while
+       active — less section padding, smaller header gap, slightly shorter stage —
+       so the whole thing (heading included) sits comfortably within one screen. */
+    .what-we-do:has(.cosmos-stage.is-active) {
+        padding: 2.5rem 0 3rem;
+    }
+    .what-we-do:has(.cosmos-stage.is-active) .section-header {
+        margin-bottom: 1.5rem;
+    }
+
     .cosmos-stage.is-active {
         grid-template-columns: 1.15fr 0.85fr;
-        align-items: center;
+        /* Stretch both columns to a single fixed row height and let each centre
+           its OWN content. Critically NOT align-items:center — with centering the
+           row height tracks the taller child, so when a focused node injects its
+           rich media into the detail panel the row grows and the orbit re-centres
+           downward (the "snaps to upper half" jump). Decoupling the column heights
+           keeps the orbit's position independent of the panel's content. */
+        align-items: stretch;
         gap: 2rem;
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 2rem;
-        min-height: 78vh;
+        height: 68vh;
+        min-height: 68vh;
+    }
+
+    /* Each column centres its own content within the fixed row height. */
+    .cosmos-stage.is-active .cosmos-viewport,
+    .cosmos-stage.is-active .cosmos-detail {
+        align-self: center;
+    }
+
+    /* Cap the panel to the row height so it can never grow the row (that was the
+       "snaps to upper half" jump). The panel content is now trimmed to title +
+       short summary + visual, so it fits without an inner scrollbar — clip any
+       rare overflow rather than show the ugly scroll. */
+    .cosmos-stage.is-active .cosmos-detail {
+        max-height: 68vh;
+        overflow: hidden;
     }
 }
 
@@ -66,8 +100,8 @@ html.motion .solutions-grid.is-hidden {
     box-shadow: inset 0 0 60px hsl(var(--shadow-color) / 0.04);
 }
 
-.cosmos-ring--inner { width: 52%; height: 52%; }
-.cosmos-ring--outer { width: 92%; height: 92%; border-style: dashed; border-color: var(--gray-200); }
+.cosmos-ring--inner { width: 60%; height: 60%; }
+.cosmos-ring--outer { width: 84%; height: 84%; border-style: dashed; border-color: var(--gray-200); }
 
 /* ---- Core ---- */
 .cosmos-core {
@@ -121,8 +155,8 @@ html.motion .solutions-grid.is-hidden {
        renders nodes fully visible. */
     transform: translate(-50%, -50%) translate(var(--x, 0px), var(--y, 0px)) scale(calc(var(--s, 1) * (0.4 + 0.6 * var(--reveal, 1))));
     opacity: var(--reveal, 1);
-    width: 104px;
-    height: 104px;
+    width: 92px;
+    height: 92px;
     margin: 0;
     display: grid;
     place-items: center;
@@ -181,35 +215,42 @@ html.motion .solutions-grid.is-hidden {
     box-shadow: var(--focus-ring), var(--shadow-md);
 }
 
-/* ---- Detail panel ---- */
+/* ---- Detail panel (card) ---- */
 .cosmos-detail {
     position: relative;
-    padding: 1.5rem 0;
     max-width: 30rem;
+    /* Compact card: bordered surface with tight, even padding so each orbit reads
+       as a small digestible card rather than a long scrolling column. */
+    padding: 1.6rem 1.7rem;
+    background: var(--light);
+    border: 1px solid var(--gray-200);
+    border-radius: 16px;
+    box-shadow: 0 18px 50px -28px hsl(var(--shadow-color) / 0.35);
 }
 
 .cosmos-detail-index {
     display: inline-block;
     font-variant-numeric: tabular-nums;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     color: var(--primary);
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.6rem;
 }
 
 .cosmos-detail-title {
-    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    font-size: clamp(1.45rem, 2.2vw, 1.85rem);
     color: var(--secondary);
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.7rem;
     letter-spacing: -0.03em;
+    line-height: 1.12;
 }
 
 .cosmos-detail-text {
     color: var(--gray-600);
-    line-height: 1.7;
-    font-size: 1.05rem;
-    margin-bottom: 1.4rem;
+    line-height: 1.6;
+    font-size: 0.98rem;
+    margin-bottom: 1rem;
 }
 
 .cosmos-detail-cta {
@@ -226,10 +267,59 @@ html.motion .solutions-grid.is-hidden {
     color: var(--primary-strong);
 }
 
+/* Optional rich media for "proven" solutions: scroll-narrative.js clones the
+   card's .solution-detail .solution-visual here when such a node is focused,
+   and empties it otherwise. Hidden until populated so the panel doesn't jump. */
+.cosmos-detail-media {
+    margin: 0.75rem 0 0.25rem;
+}
+
+.cosmos-detail-media:empty {
+    display: none;
+}
+
+.cosmos-detail-media .solution-visual {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+}
+
+/* The "Proven" badge rides along into the panel for enriched nodes.
+   JS sets its text content; empty → hidden so other nodes don't show a gap. */
+.cosmos-detail-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0 0 0.9rem 0.75rem;
+    padding: 0.28rem 0.7rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary-strong);
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+    border-radius: 50px;
+}
+
+.cosmos-detail-badge:empty {
+    display: none;
+}
+
+.cosmos-detail.is-swapping .cosmos-detail-media {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.cosmos-detail-media {
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
 /* Subtle swap animation when the focused solution changes */
 .cosmos-detail.is-swapping .cosmos-detail-title,
 .cosmos-detail.is-swapping .cosmos-detail-text,
-.cosmos-detail.is-swapping .cosmos-detail-index {
+.cosmos-detail.is-swapping .cosmos-detail-index,
+.cosmos-detail.is-swapping .cosmos-detail-badge {
     opacity: 0;
     transform: translateY(8px);
 }
@@ -237,6 +327,7 @@ html.motion .solutions-grid.is-hidden {
 .cosmos-detail-title,
 .cosmos-detail-text,
 .cosmos-detail-index,
+.cosmos-detail-badge,
 .cosmos-detail-cta {
     transition: opacity var(--transition-base), transform var(--transition-base);
 }

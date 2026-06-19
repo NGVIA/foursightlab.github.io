@@ -98,10 +98,18 @@
     var data = cards.map(function (card) {
       var h = card.querySelector('h3');
       var p = card.querySelector('p');
+      // The orbit panel is kept clean and professional: badge + title + a one-line
+      // summary + "Learn more". We deliberately do NOT pull in the cards' demo
+      // visuals (search box, gauge) or the extended paragraphs — those live on the
+      // full solution page, reached via the CTA. Capture the badge text so the
+      // panel can echo it.
+      var badge = card.querySelector('.solution-proven');
       return {
         title: h ? h.textContent.trim() : '',
         text: p ? p.textContent.trim() : '',
-        href: card.getAttribute('href') || '#'
+        href: card.getAttribute('href') || '#',
+        detail: null,
+        badge: badge ? badge.textContent.trim() : ''
       };
     });
 
@@ -113,9 +121,29 @@
     stage.classList.add('is-active');
     grid.classList.add('is-hidden');
 
-    // Position nodes: 3 on the inner ring, 3 on the outer ring, evenly spread.
+    // Position nodes across TWO rings so they aren't all on one line. The layout
+    // is an explicit, hand-tuned table (deterministic, reproducible) rather than
+    // even spacing — a composed, asymmetric arrangement reads better than a
+    // symmetric star. Radii are kept <= ~0.45 of the viewport so no node clips the
+    // square stage. ring drives counter-rotation direction so the two rings drift
+    // against each other and the asymmetry stays alive in motion.
+    //   angle: degrees, 0° = right, growing clockwise (CSS y is down). -90° = top.
+    //   ring : 'inner' | 'outer' → drift direction.
     var nodes = [];
-    var ringRadii = { inner: 0.30, outer: 0.47 }; // fraction of viewport size
+    var total = data.length;
+    var DEG = Math.PI / 180;
+    // Index-aligned with the 5 solution cards. Two inner, three outer, placed so
+    // the cluster feels balanced but not mechanical.
+    var layoutByCount = {
+      5: [
+        { ring: 'inner', angle: -64, radius: 0.30 },
+        { ring: 'outer', angle: -18, radius: 0.42 },
+        { ring: 'inner', angle:  128, radius: 0.30 },
+        { ring: 'outer', angle:  64, radius: 0.42 },
+        { ring: 'outer', angle:  -150, radius: 0.42 }
+      ]
+    };
+    var layoutTable = layoutByCount[total] || null;
     data.forEach(function (d, i) {
       var node = document.createElement('a');
       node.className = 'cosmos-node';
@@ -132,14 +160,16 @@
       node.appendChild(label);
       orbit.appendChild(node);
 
-      var ring = i % 2 === 0 ? 'inner' : 'outer';
-      // Distribute angles; offset alternating rings so they interleave.
-      var perRing = 3;
-      var idxInRing = Math.floor(i / 2);
-      var baseAngle = (idxInRing / perRing) * Math.PI * 2;
-      if (ring === 'outer') baseAngle += Math.PI / 3;
+      // Use the hand-tuned two-ring table when available; otherwise fall back to
+      // an even single ring (keeps any other node count working).
+      var spec = layoutTable ? layoutTable[i] : null;
+      var baseAngle = spec
+        ? spec.angle * DEG
+        : (i / total) * Math.PI * 2 - Math.PI / 2;
+      var radiusFrac = spec ? spec.radius : 0.40;
+      var ring = spec ? spec.ring : (i % 2 === 0 ? 'inner' : 'outer');
 
-      nodes.push({ el: node, ring: ring, angle: baseAngle, radiusFrac: ringRadii[ring], data: d });
+      nodes.push({ el: node, ring: ring, angle: baseAngle, radiusFrac: radiusFrac, data: d });
     });
 
     function layout() {
@@ -166,7 +196,7 @@
       var dt = (time - lastTime) / 1000;
       lastTime = time;
       nodes.forEach(function (n) {
-        var dir = n.ring === 'inner' ? 1 : -1; // counter-rotating rings
+        var dir = n.ring === 'inner' ? 1 : -1; // rings drift against each other
         n.angle += driftSpeed * dir * dt;
       });
       layout();
@@ -186,12 +216,37 @@
     // Detail panel.
     var detail = document.querySelector('.cosmos-detail');
     var dIndex = detail.querySelector('.cosmos-detail-index');
+    var dBadge = detail.querySelector('.cosmos-detail-badge');
     var dTitle = detail.querySelector('.cosmos-detail-title');
     var dText = detail.querySelector('.cosmos-detail-text');
+    var dMedia = detail.querySelector('.cosmos-detail-media');
     var dCta = detail.querySelector('.cosmos-detail-cta');
     var current = -1;
 
     function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+    // Fill the panel for node i WITHOUT the fade swap. Used to seed node 0 before
+    // construction finishes, so when the scroll handler first calls focusNode(0)
+    // it's already current and returns early — no visible "refresh" flicker at the
+    // construction→walkthrough hand-off.
+    function setPanelImmediate(i) {
+      current = i;
+      var d = nodes[i].data;
+      dIndex.textContent = pad(i + 1) + ' / ' + pad(nodes.length);
+      if (dBadge) dBadge.textContent = d.badge || '';
+      dTitle.textContent = d.title;
+      dText.textContent = d.text;
+      if (dMedia) {
+        dMedia.textContent = '';
+        if (d.detail) dMedia.appendChild(d.detail.cloneNode(true));
+      }
+      dCta.setAttribute('href', d.href);
+      nodes.forEach(function (n, j) {
+        n.el.classList.toggle('is-focused', j === i);
+        n.el.classList.toggle('is-dimmed', j !== i);
+        n.el.style.setProperty('--s', j === i ? '1.42' : '1');
+      });
+    }
 
     function focusNode(i) {
       if (i === current || i < 0 || i >= nodes.length) return;
@@ -207,8 +262,15 @@
       gsap.delayedCall(0.18, function () {
         var d = nodes[i].data;
         dIndex.textContent = pad(i + 1) + ' / ' + pad(nodes.length);
+        if (dBadge) dBadge.textContent = d.badge || '';
         dTitle.textContent = d.title;
         dText.textContent = d.text;
+        // Swap in the cloned detail (extra copy + visual) for enriched nodes;
+        // clear it otherwise so a plain node never shows the previous node's.
+        if (dMedia) {
+          dMedia.textContent = '';
+          if (d.detail) dMedia.appendChild(d.detail.cloneNode(true));
+        }
         dCta.setAttribute('href', d.href);
         detail.classList.remove('is-swapping');
       });
@@ -216,14 +278,19 @@
 
     // Construction starts from nothing: core + rings hidden, every node at
     // --reveal 0. buildProgress() (below) reveals them as scroll progresses,
-    // and reverses on scroll-up. focusNode is NOT called here — there are no
-    // visible nodes yet; the detail panel stays empty until construction ends.
+    // and reverses on scroll-up.
     var core = stage.querySelector('.cosmos-core');
     var rings = Array.prototype.slice.call(stage.querySelectorAll('.cosmos-ring'));
     gsap.set(viewport, { scale: 1, transformOrigin: '50% 50%' });
     if (core) gsap.set(core, { autoAlpha: 0, scale: 0.6, transformOrigin: '50% 50%' });
     rings.forEach(function (r) { gsap.set(r, { autoAlpha: 0, scale: 0.85, transformOrigin: '50% 50%' }); });
     nodes.forEach(function (n) { n.el.style.setProperty('--reveal', '0'); });
+
+    // Seed the panel + focus state for node 0 up front (no fade). The nodes are
+    // still --reveal:0 so nothing shows during construction, but when the system
+    // finishes and the walkthrough's focusNode(0) fires, it's already current and
+    // returns early — eliminating the first-swap flicker at the hand-off.
+    setPanelImmediate(0);
 
     // ---- Phase layout ------------------------------------------------------
     // The pinned scroll range is split into a CONSTRUCTION slice (the system

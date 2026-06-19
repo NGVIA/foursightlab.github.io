@@ -1,34 +1,25 @@
 # FourSight Lab
 
-> FourSight Lab is an AI and data intelligence consultancy that builds custom AI systems for businesses — including RAG (Retrieval-Augmented Generation) systems, predictive analytics, churn prediction models, document data extraction, and intelligent data pipelines.
+> FourSight Lab is an AI and data intelligence consultancy that builds agentic AI systems for businesses — proven in production. Our work spans agentic RAG and knowledge systems, document and process automation, predictive and decision intelligence, live monitoring, and agent interoperability (including open-source MCP servers and OGC/INSPIRE geospatial integration).
 
-We help organizations turn raw data into decisive action through tailored AI solutions. Our approach is problem-first: we start with your business challenge, then choose the right technology — whether that's a neural network, a rule-based system, or something simpler.
+We help organizations turn raw data into decisive action through tailored AI systems that read, decide, and act. Our approach is problem-first: we start with your business challenge, then choose the right technology — whether that's an agentic RAG pipeline, a predictive model, or a standards-based connector.
 
-## What we build
+## Practice areas (orbits)
 
-- **RAG Systems**: AI-powered document search that lets teams query thousands of internal files (contracts, reports, emails) in plain English.
-- **Predictive Analytics**: Models that forecast customer behavior, equipment failures, and market trends.
-- **Custom AI Models**: Specialized models for fraud detection, quality control, demand forecasting, and domain-specific challenges.
-- **Data Pipeline Automation**: Intelligent pipelines that clean, transform, and analyze data continuously.
-- **Real-time Analytics**: Live data systems for decision-making as data flows in.
-- **Smart Recommendations**: Recommendation engines for inventory, marketing, and operational decisions.
-
-## Proven solutions
-
-- **Churn & Acquisition Models**: Identify customers likely to leave and the actions that retain them. Documented reductions in customer churn of up to 87%.
-- **Document Data Extraction**: Extract text, tables, and structured data from PDFs, invoices, contracts, and forms — eliminating manual data entry.
+- **Agentic Knowledge & RAG**: Retrieval that reasons over multiple sources to answer in plain language with citations — built for massive concurrent usage and kept current by live crawlers feeding the knowledge base.
+- **Document & Process Automation**: Agents that read, complete, and correct documents — including handwritten content from scanned PDFs (HTR) — auto-complete official paperwork via public APIs, and push clean, structured data into ERP (e.g. SoftOne) and other systems.
+- **Predictive & Decision Intelligence**: Churn and acquisition models that forecast outcomes and recommend the next best action; extends to demand forecasting, lifetime-value, lead scoring, and risk/fraud detection.
+- **Live Monitoring & Analytics**: Real-time dashboards (e.g. live energy monitoring) that turn streaming energy, operations, and sensor data into action as it arrives, with anomaly and threshold alerting.
+- **Agent Interoperability & Geospatial AI**: Open-source MCP servers and standards-based connectors that let AI agents query OGC map services (WMS/WFS) and INSPIRE-compliant GIS data. Our `mcp-ogc` server is open source: https://github.com/nickoulos/mcp-ogc
 
 ## Pages
 
 - [Home](https://foursightlab.com/): Company overview and solution catalog.
-- [RAG Systems](https://foursightlab.com/rag-systems.html): AI document search.
-- [Predictive Analytics](https://foursightlab.com/predictive-analytics.html): Forecasting models.
-- [Custom AI Models](https://foursightlab.com/custom-ai-models.html): Bespoke AI for specific business problems.
-- [Data Pipeline Automation](https://foursightlab.com/data-pipeline-automation.html): Automated data processing.
-- [Real-time Analytics](https://foursightlab.com/real-time-analytics.html): Live data insights.
-- [Smart Recommendations](https://foursightlab.com/smart-recommendations.html): Recommendation engines.
-- [Churn & Acquisition Models](https://foursightlab.com/churn-acquisition-models.html): Customer retention AI.
-- [Document Data Extraction](https://foursightlab.com/document-extraction.html): Document AI.
+- [Agentic Knowledge & RAG](https://foursightlab.com/rag-systems.html): Agentic RAG and knowledge systems.
+- [Document & Process Automation](https://foursightlab.com/document-extraction.html): Document reading, completion, correction, and system integration.
+- [Predictive & Decision Intelligence](https://foursightlab.com/predictive-analytics.html): Forecasting and next-best-action models.
+- [Live Monitoring & Analytics](https://foursightlab.com/real-time-analytics.html): Real-time dashboards and streaming analytics.
+- [Agent Interoperability & Geospatial AI](https://foursightlab.com/agent-interoperability.html): MCP servers and geospatial agent integration.
 
 ## Contact
 

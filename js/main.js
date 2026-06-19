@@ -42,14 +42,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Smooth scroll for anchor links
+    // Smooth scroll for anchor links. Read the href at CLICK time (not bind time)
+    // and only intercept real in-page targets: a bare "#" or a non-anchor href
+    // (e.g. the orbit "Learn more" CTA, whose href is rewritten to a page by
+    // scroll-narrative.js) must fall through to normal navigation.
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href') || '';
+            if (href.charAt(0) !== '#') return;        // href changed to a page → let it navigate
+            const targetId = href.substring(1);
+            if (!targetId) return;                     // bare "#" → do nothing, don't block
             e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            if (targetId) {
-                scrollToSection(targetId);
-            }
+            scrollToSection(targetId);
         });
     });
 
