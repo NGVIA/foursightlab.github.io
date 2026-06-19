@@ -20,6 +20,7 @@ We help organizations turn raw data into decisive action through tailored AI sys
 - [Predictive & Decision Intelligence](https://foursightlab.com/predictive-analytics/): Forecasting and next-best-action models.
 - [Live Monitoring & Analytics](https://foursightlab.com/real-time-analytics/): Real-time dashboards and streaming analytics.
 - [Agent Interoperability & Geospatial AI](https://foursightlab.com/agent-interoperability/): MCP servers and geospatial agent integration.
+- [FAQ](https://foursightlab.com/faq/): Plain-language answers — what we do, agentic AI vs chatbots, agentic RAG, custom systems, data/industries, and how to get started.
 
 ## Contact
 
