@@ -56,12 +56,19 @@
     <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     <span class="brand-name">FourSight<span class="brand-lab">lab</span></span>
   </a>
-  <nav class="nav-links" aria-label="Primary">
-    <a href="#services">Services</a>
-    <a href="#work">Case studies</a>
-    <a href="/faq/">FAQ</a>
-  </nav>
-  <a class="btn btn-primary nav-cta" href="#contact">Book a call</a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+  <div class="nav-menu" id="primary-nav">
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#work">Case studies</a>
+      <a href="/faq/">FAQ</a>
+    </nav>
+    <a class="btn btn-primary nav-cta" href="#contact">Book a call</a>
+  </div>
 </header>
 
 <section id="home" class="hero">
@@ -202,6 +209,36 @@
           integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
           crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="js/constellation-v2.js" defer></script>
+
+  <script>
+  // Mobile nav: hamburger toggles the dropdown panel. No-op on desktop (button hidden).
+  (function(){
+    var nav = document.querySelector('.nav');
+    var toggle = nav && nav.querySelector('.nav-toggle');
+    if(!toggle) return;
+
+    function setOpen(open){
+      nav.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+
+    toggle.addEventListener('click', function(){
+      setOpen(!nav.classList.contains('nav-open'));
+    });
+
+    // Close after tapping a link so the target isn't hidden behind the panel.
+    nav.querySelectorAll('.nav-menu a').forEach(function(link){
+      link.addEventListener('click', function(){ setOpen(false); });
+    });
+
+    // Close on Escape.
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && nav.classList.contains('nav-open')) setOpen(false);
+    });
+  })();
+  </script>
+
   <script>
   (function(){
     var track = document.querySelector('.cards');
